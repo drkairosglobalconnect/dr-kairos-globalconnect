@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hospital Registration</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<h2>Dr Kairos GlobalConnect</h2>
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/registration">Registration</a></li>
+
+</ul>
+
+</nav>
+
+<section class="form-section">
+
+<h1>Hospital Registration</h1>
+
+<p><b>Partnership Registration Fee: ₹777</b></p>
+
+<form method="POST">
+
+<h2>Hospital Details</h2>
+
+<label>Hospital Name</label>
+<input type="text" name="hospital_name" required>
+
+<select name="hospital_type" required>
+
+<option>Government</option>
+<option>Private</option>
+<option>Teaching Hospital</option>
+<option>Speciality Hospital</option>
+<option>Multi-Speciality Hospital</option>
+
+</select>
+
+<label>Number of Beds</label>
+<input type="number" name="beds" required>
+
+<label>Number of Doctors</label>
+<input type="number" name="doctors" required>
+
+<label>Medical Specialties</label>
+<input type="text" name="specialties" required>
+
+<h2>Contact Person</h2>
+
+<label>Name</label>
+<input type="text" name="contact_name" required>
+
+<label>Designation</label>
+<input type="text" name="designation" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Mobile</label>
+<input type="tel" name="mobile" required>
+
+<h2>Address</h2>
+
+<label>City</label>
+<input type="text" name="city" required>
+
+<label>State</label>
+<input type="text" name="state" required>
+
+<label>Country</label>
+<input type="text" name="country" required>
+
+<h2>Upload Documents</h2>
+
+<label>Hospital Registration Certificate</label>
+<input type="file">
+
+<label>Hospital Profile</label>
+<input type="file">
+
+<label>Password</label>
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    required>
+
+<br><br>
+
+<button type="submit">
+Register Hospital – ₹777
+
+</button>
+
+</form>
+
+</section>
+
+</body>
+
+</html>

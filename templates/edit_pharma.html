@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Pharmaceutical Company</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<section class="form-section">
+
+<h1>Edit Pharmaceutical Company</h1>
+
+<form method="POST">
+
+<label>Company Name</label>
+<input type="text" name="company_name"
+value="{{ pharma.company_name }}" required>
+
+<label>Registration Number</label>
+<input type="text" name="registration_number"
+value="{{ pharma.registration_number }}" required>
+
+<label>Website</label>
+<input type="text" name="website"
+value="{{ pharma.website }}">
+
+<label>Contact Name</label>
+<input type="text" name="contact_name"
+value="{{ pharma.contact_name }}" required>
+
+<label>Designation</label>
+<input type="text" name="designation"
+value="{{ pharma.designation }}" required>
+
+<label>Email</label>
+<input type="email" name="email"
+value="{{ pharma.email }}" required>
+
+<label>Mobile</label>
+<input type="text" name="mobile"
+value="{{ pharma.mobile }}" required>
+
+<label>Category</label>
+<input type="text" name="category"
+value="{{ pharma.category }}" required>
+
+<br><br>
+
+<button type="submit">
+Update Company
+</button>
+
+</form>
+
+</section>
+
+</body>
+</html>

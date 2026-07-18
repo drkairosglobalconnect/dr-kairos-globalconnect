@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Conferences</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1 style="text-align:center;">
+
+Upcoming Conferences
+
+</h1>
+<table border="1" style="width:90%; margin:auto;">
+
+<tr>
+    <th>Name</th>
+    <th>Specialty</th>
+    <th>Country</th>
+    <th>Venue</th>
+    <th>Date</th>
+    <th>Organizer</th>
+    <th>Fee</th>
+    <th>Action</th>
+</tr>
+
+{% for conference in conferences %}
+
+<tr>
+
+    <td>{{ conference.conference_name }}</td>
+    <td>{{ conference.specialty }}</td>
+    <td>{{ conference.country }}</td>
+    <td>{{ conference.venue }}</td>
+    <td>{{ conference.conference_date }}</td>
+    <td>{{ conference.organizer }}</td>
+    <td>{{ conference.registration_fee }}</td>
+
+    <td>
+
+        <a href="{{ url_for('edit_conference', id=conference.id) }}">
+            Edit
+        </a>
+
+        |
+
+        <a href="{{ url_for('delete_conference', id=conference.id) }}"
+           onclick="return confirm('Delete this conference?')">
+            Delete
+        </a>
+
+        |
+
+        <a href="{{ url_for('payment', id=conference.id) }}">
+            <button>Register & Pay</button>
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+
+</html>

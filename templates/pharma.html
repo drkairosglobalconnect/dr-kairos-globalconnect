@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pharmaceutical Company Registration</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<h2>Dr Kairos GlobalConnect</h2>
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/registration">Registration</a></li>
+
+</ul>
+
+</nav>
+
+<section class="form-section">
+
+<h1>Pharmaceutical Company Registration</h1>
+
+<p><b>Partnership Registration Fee: ₹777</b></p>
+
+<form method="POST">
+
+<h2>Company Details</h2>
+
+<label>Company Name</label>
+<input type="text" name="company_name" required>
+
+<label>Company Registration Number</label>
+<input type="text" name="registration_number" required>
+
+<label>Website</label>
+<input type="url" name="website">
+
+<h2>Contact Person</h2>
+
+<label>Name</label>
+<input type="text" name="contact_name" required>
+
+<label>Designation</label>
+<input type="text" name="designation" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Mobile</label>
+<input type="tel" name="mobile" required>
+
+<h2>Business Category</h2>
+
+<select name="category" required>
+
+<option value="">Select Category</option>
+
+<option>Pharmaceutical</option>
+
+<option>Medical Devices</option>
+
+<option>Biotechnology</option>
+
+<option>Diagnostics</option>
+
+</select>
+
+<h2>Upload Documents</h2>
+
+<label>Company Registration Certificate</label>
+
+<input type="file">
+
+<label>Company Profile</label>
+
+<input type="file">
+
+<label>Password</label>
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    required>
+
+<br><br>
+
+<button type="submit">
+
+Register Company – ₹777
+
+</button>
+
+</form>
+
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Conference Organizer</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<section class="form-section">
+
+<h1>Edit Conference Organizer</h1>
+
+<form method="POST">
+
+<label>Organization Name</label>
+<input type="text" name="organization_name"
+value="{{ organizer.organization_name }}" required>
+
+<label>Website</label>
+<input type="text" name="website"
+value="{{ organizer.website }}">
+
+<label>Contact Person</label>
+<input type="text" name="contact_person"
+value="{{ organizer.contact_person }}" required>
+
+<label>Email</label>
+<input type="email" name="email"
+value="{{ organizer.email }}" required>
+
+<label>Mobile</label>
+<input type="text" name="mobile"
+value="{{ organizer.mobile }}" required>
+
+<label>Conference Name</label>
+<input type="text" name="conference_name"
+value="{{ organizer.conference_name }}" required>
+
+<label>Specialty</label>
+<input type="text" name="specialty"
+value="{{ organizer.specialty }}" required>
+
+<label>Country</label>
+<input type="text" name="country"
+value="{{ organizer.country }}" required>
+
+<label>Venue</label>
+<input type="text" name="venue"
+value="{{ organizer.venue }}" required>
+
+<label>Conference Date</label>
+<input type="date" name="conference_date"
+value="{{ organizer.conference_date }}" required>
+
+<br><br>
+
+<button type="submit">
+Update Organizer
+</button>
+
+</form>
+
+</section>
+
+</body>
+</html>

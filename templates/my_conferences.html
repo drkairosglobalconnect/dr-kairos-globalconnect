@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Conferences</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1 style="text-align:center;">
+    My Registered Conferences
+</h1>
+
+<br>
+
+<table border="1" style="width:90%; margin:auto; border-collapse:collapse;">
+
+<tr>
+
+    <th>ID</th>
+    <th>Conference Name</th>
+    <th>Specialty</th>
+    <th>Country</th>
+    <th>Venue</th>
+    <th>Date</th>
+    <th>Organizer</th>
+    <th>Registration Fee</th>
+
+</tr>
+
+{% if conferences %}
+
+    {% for conference in conferences %}
+
+    <tr>
+
+        <td>{{ conference.id }}</td>
+        <td>{{ conference.conference_name }}</td>
+        <td>{{ conference.specialty }}</td>
+        <td>{{ conference.country }}</td>
+        <td>{{ conference.venue }}</td>
+        <td>{{ conference.conference_date }}</td>
+        <td>{{ conference.organizer }}</td>
+        <td>{{ conference.registration_fee }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+{% else %}
+
+<tr>
+
+<td colspan="8" style="text-align:center;">
+    You have not registered for any conferences yet.
+</td>
+
+</tr>
+
+{% endif %}
+
+</table>
+
+<br><br>
+
+<div style="text-align:center;">
+
+<a href="{{ url_for('conference_list') }}">
+    View All Conferences
+</a>
+
+&nbsp;&nbsp;&nbsp;
+
+<a href="{{ url_for('doctor_dashboard') }}">
+    Back to Dashboard
+</a>
+
+</div>
+
+</body>
+
+</html>

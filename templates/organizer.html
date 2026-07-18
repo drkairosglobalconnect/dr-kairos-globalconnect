@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Conference Organizer Registration</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<h2>Dr Kairos GlobalConnect</h2>
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/registration">Registration</a></li>
+
+</ul>
+
+</nav>
+
+<section class="form-section">
+
+<h1>Conference Organizer Registration</h1>
+
+<p><b>Partnership Registration Fee: ₹777</b></p>
+
+<form method="POST">
+
+<h2>Organization Details</h2>
+
+<label>Organization Name</label>
+<input type="text" name="organization_name" required>
+
+<label>Website</label>
+<input type="url" name="website">
+
+<label>Contact Person</label>
+<input type="text" name="contact_person" required>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Mobile</label>
+<input type="tel" name="mobile" required>
+
+<h2>Conference Details</h2>
+
+<label>Conference Name</label>
+<input type="text" name="conference_name" required>
+
+<label>Medical Specialty</label>
+<input type="text" name="specialty" required>
+
+<label>Country</label>
+<input type="text" name="country" required>
+
+<label>Venue</label>
+<input type="text" name="venue" required>
+
+<label>Date</label>
+<input type="date" name="conference_date" required>
+
+<h2>Upload Documents</h2>
+
+<label>Conference Brochure</label>
+<input type="file">
+
+<label>Organization Profile</label>
+<input type="file">
+
+<label>Password</label>
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    required>
+
+
+<br><br>
+
+<button type="submit">
+
+Register Organizer – ₹777
+
+</button>
+
+</form>
+
+</section>
+
+</body>
+
+</html>

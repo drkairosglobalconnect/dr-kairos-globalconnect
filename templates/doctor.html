@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Doctor Registration</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<h2>Dr Kairos GlobalConnect</h2>
+
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="/registration">Registration</a></li>
+
+</ul>
+
+</nav>
+
+<section class="form-section">
+
+<h1>Doctor Registration</h1>
+
+<p>Professional Registration Fee: <b>₹399</b></p>
+
+<form method="POST" enctype="multipart/form-data">
+
+<h2>Personal Details</h2>
+
+<label>Full Name</label>
+
+<input type="text" name="full_name" placeholder="Enter Full Name" required>
+
+<label>Gender</label>
+
+<select name="gender">
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+<label>Date of Birth</label>
+
+<input type="date" name="dob">
+
+<label>Nationality</label>
+
+<input type="text" name="nationality">
+
+<h2>Contact Details</h2>
+
+<label>Email</label>
+
+<input type="email" name="email" required>
+
+<label>Mobile Number</label>
+
+<input type="tel" name="mobile" required>
+
+<label>WhatsApp Number</label>
+
+<input type="tel" name="whatsapp" required>
+
+<h2>Professional Details</h2>
+
+<label>Medical Degree</label>
+
+<input type="text" name="degree_name">
+
+<label>Specialty</label>
+
+<input type="text" name="specialty" required>
+
+<label>Medical Registration Number</label>
+
+<input type="text" name="registration_number">
+
+<label>Medical Council</label>
+
+<input type="text" name="medical_council">
+
+<label>Years of Experience</label>
+
+<input type="number" name="experience" required>
+
+<h2>Hospital Details</h2>
+
+<label>Hospital Name</label>
+
+<input type="text" name="hospital" required>
+
+<label>Department</label>
+
+<input type="text" name="department">
+
+<label>Designation</label>
+
+<input type="text" name="designation">
+
+<h2>Upload Documents</h2>
+
+<label>Degree Certificate</label>
+
+<input
+type="file"
+name="degree"
+required>
+
+<label>Medical Registration Certificate</label>
+
+<input
+type="file"
+name="registration_certificate"
+required>
+
+<label>Password</label>
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    required>
+
+<br><br>
+
+<button type="submit">
+
+Register Now - ₹399
+
+</button>
+
+</form>
+
+</section>
+
+</body>
+
+</html>

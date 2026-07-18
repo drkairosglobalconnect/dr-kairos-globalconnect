@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Conference Payment</title>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1 style="text-align:center;">Conference Registration Payment</h1>
+
+<div style="width:500px;margin:auto;text-align:center;">
+
+    <h2>{{ conference.conference_name }}</h2>
+
+    <p><strong>Specialty:</strong> {{ conference.specialty }}</p>
+
+    <p><strong>Venue:</strong> {{ conference.venue }}</p>
+
+    <p><strong>Date:</strong> {{ conference.conference_date }}</p>
+
+    <h2>Registration Fee: ₹{{ conference.registration_fee }}</h2>
+
+    <button id="rzp-button">
+        Pay Now
+    </button>
+
+</div>
+
+<script>
+
+var options = {
+
+    "key": "{{ key_id }}",
+
+    "amount": "{{ order.amount }}",
+
+    "currency": "INR",
+
+    "name": "Dr Kairos GlobalConnect",
+
+    "description": "Conference Registration",
+
+    "order_id": "{{ order.id }}",
+
+    handler: function (response){
+
+    var form = document.createElement("form");
+
+    form.method = "POST";
+
+    form.action = "/payment_success";
+
+    var payment = document.createElement("input");
+
+    payment.type = "hidden";
+
+    payment.name = "razorpay_payment_id";
+
+    payment.value = response.razorpay_payment_id; 
+
+    var order = document.createElement("input");
+
+    order.type = "hidden";
+
+    order.name = "razorpay_order_id";
+
+    order.value = response.razorpay_order_id;
+
+    form.appendChild(order);
+
+    var signature = document.createElement("input");
+
+    signature.type = "hidden";
+
+    signature.name = "razorpay_signature";
+
+    signature.value = response.razorpay_signature;
+
+    form.appendChild(signature);
+
+    var conference = document.createElement("input");
+
+    conference.type = "hidden";
+
+    conference.name = "conference_id";
+
+    conference.value = "{{ conference.id }}";
+
+    form.appendChild(payment);
+
+    form.appendChild(conference);
+
+    document.body.appendChild(form);
+
+    form.submit();
+},
+    "theme": {
+
+        "color": "#0d6efd"
+
+    }
+
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('rzp-button').onclick = function(e){
+
+    rzp.open();
+
+    e.preventDefault();
+
+}
+
+</script>
+
+</body>
+
+</html>

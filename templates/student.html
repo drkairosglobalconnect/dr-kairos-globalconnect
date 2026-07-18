@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Registration</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+<h2>Dr Kairos GlobalConnect</h2>
+</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+<li><a href="/registration">Registration</a></li>
+
+</ul>
+
+</nav>
+
+<section class="form-section">
+
+<h1>Student Registration</h1>
+
+<p>Registration Fee: <b>₹199</b></p>
+
+<form method="POST">
+
+<h2>Student Details</h2>
+
+<label>Full Name</label>
+<input type="text" name="full_name" required>
+
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
+
+<select name="gender" required>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+</select>
+
+<h2>College Details</h2>
+
+<label>College Name</label>
+<input type="text" name="college" required>
+
+<label>University</label>
+<input type="text" name="university" required>
+
+<label>Course</label>
+<input type="text" name="course" required>
+
+<label>Year of Study</label>
+<input type="number" name="year" required>
+
+<h2>Contact Details</h2>
+
+<label>Email</label>
+<input type="email" name="email" required>
+
+<label>Mobile Number</label>
+<input type="tel" name="mobile" required>
+
+<label>WhatsApp Number</label>
+<input type="tel" name="whatsapp" required>
+
+<h2>Upload Student ID</h2>
+
+<input type="file">
+
+<label>Password</label>
+
+<input
+    type="password"
+    name="password"
+    placeholder="Enter Password"
+    required>
+
+<br><br>
+
+<button type="submit">
+
+Register Now - ₹199</button>
+
+</button>
+
+</form>
+
+</section>
+
+</body>
+</html>
