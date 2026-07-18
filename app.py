@@ -4,11 +4,30 @@ import os
 from openpyxl import Workbook
 
 from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, send_file
+from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+
+mail = Mail(app)
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 587
+app.config["MAIL_USE_TLS"] = True
+
+app.config["MAIL_USERNAME"] = "your_email@gmail.com"
+app.config["MAIL_PASSWORD"] = "your_app_password"
+
+mail = Mail(app)
 
 client = razorpay.Client(auth=(
     "rzp_test_TEwktCUYs0SlOF",
