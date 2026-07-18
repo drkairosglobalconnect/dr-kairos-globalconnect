@@ -15,17 +15,8 @@ app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 
-app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
-app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
-
-mail = Mail(app)
-
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 587
-app.config["MAIL_USE_TLS"] = True
-
-app.config["MAIL_USERNAME"] = "your_email@gmail.com"
-app.config["MAIL_PASSWORD"] = "your_app_password"
+app.config["MAIL_USERNAME"] = "drkairosglobalconnect@gmail.com"
+app.config["MAIL_PASSWORD"] = "sdvywoanilmpmgw"
 
 mail = Mail(app)
 
@@ -206,46 +197,33 @@ def doctor():
 
     if request.method == "POST":
 
-        # Step 1: Get uploaded files
-        degree = request.files["degree"]
-        registration = request.files["registration_certificate"]
+        # your doctor save code here
 
-        # Step 2: Save uploaded files
-        degree_file = ""
-        registration_file = ""
-
-        if degree:
-            degree_file = secure_filename(degree.filename)
-            degree.save(os.path.join(app.config["UPLOAD_FOLDER"], degree_file))
-
-        if registration:
-            registration_file = secure_filename(registration.filename)
-            registration.save(os.path.join(app.config["UPLOAD_FOLDER"], registration_file))
-
-        doctor = Doctor(
-
-    full_name=request.form["full_name"],
-    email=request.form["email"],
-    mobile=request.form["mobile"],
-    specialty=request.form["specialty"],
-    hospital=request.form["hospital"],
-    experience=request.form["experience"],
-
-    password=request.form["password"],
-
-    degree_certificate=degree_file,
-    registration_certificate=registration_file
-
-)
-
-        # Step 4: Save to database
         db.session.add(doctor)
         db.session.commit()
+
+        msg = Message(
+            "New Doctor Registration - Dr Kairos GlobalConnect",
+            sender=os.environ.get("MAIL_USERNAME"),
+            recipients=[os.environ.get("MAIL_USERNAME")]
+        )
+
+        msg.body = f"""
+New Doctor Registration Received
+
+Name: {doctor.full_name}
+Email: {doctor.email}
+Mobile: {doctor.mobile}
+Specialization: {doctor.specialty}
+Hospital: {doctor.hospital}
+Experience: {doctor.experience} years
+"""
+
+        mail.send(msg)
 
         return redirect(url_for("doctor"))
 
     return render_template("doctor.html")
-
 @app.route("/student", methods=["GET", "POST"])
 def student():
 
