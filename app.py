@@ -1,8 +1,9 @@
 import sqlite3
 import razorpay
 import os
+from openpyxl import Workbook
 
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, send_file
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
 from werkzeug.utils import secure_filename
@@ -533,6 +534,47 @@ def admin():
         pharmas=pharmas,
         organizers=organizers,
         search=search
+    )
+
+@app.route("/export_doctors")
+def export_doctors():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    doctors = Doctor.query.all()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Doctors"
+
+    ws.append([
+        "ID",
+        "Name",
+        "Email",
+        "Mobile",
+        "Specialty",
+        "Hospital",
+        "Experience"
+    ])
+
+    for doctor in doctors:
+        ws.append([
+            doctor.id,
+            doctor.full_name,
+            doctor.email,
+            doctor.mobile,
+            doctor.specialty,
+            doctor.hospital,
+            doctor.experience
+        ])
+
+    file_path = "doctors.xlsx"
+    wb.save(file_path)
+
+    return send_file(
+        file_path,
+        as_attachment=True
     )
 
 @app.route("/logout")
