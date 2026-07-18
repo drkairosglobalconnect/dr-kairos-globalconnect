@@ -648,6 +648,50 @@ def delete_student(id):
 
     return redirect(url_for("admin"))
 
+@app.route("/export_students")
+def export_students():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    students = Student.query.all()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Students"
+
+    ws.append([
+        "ID",
+        "Name",
+        "DOB",
+        "Gender",
+        "College",
+        "University",
+        "Course",
+        "Year",
+        "Email",
+        "Mobile"
+    ])
+
+    for student in students:
+        ws.append([
+            student.id,
+            student.full_name,
+            student.dob,
+            student.gender,
+            student.college,
+            student.university,
+            student.course,
+            student.year,
+            student.email,
+            student.mobile
+        ])
+
+    file_path = "students.xlsx"
+    wb.save(file_path)
+
+    return send_file(file_path, as_attachment=True)
+
 @app.route("/edit_hospital/<int:id>", methods=["GET", "POST"])
 def edit_hospital(id):
 
@@ -686,6 +730,54 @@ def delete_hospital(id):
 
     return redirect(url_for("admin"))
 
+@app.route("/export_hospitals")
+def export_hospitals():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    hospitals = Hospital.query.all()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Hospitals"
+
+    ws.append([
+        "ID",
+        "Hospital Name",
+        "Type",
+        "Beds",
+        "Doctors",
+        "Specialties",
+        "Contact",
+        "Email",
+        "Mobile",
+        "City",
+        "State",
+        "Country"
+    ])
+
+    for hospital in hospitals:
+        ws.append([
+            hospital.id,
+            hospital.hospital_name,
+            hospital.hospital_type,
+            hospital.beds,
+            hospital.doctors,
+            hospital.specialties,
+            hospital.contact_name,
+            hospital.email,
+            hospital.mobile,
+            hospital.city,
+            hospital.state,
+            hospital.country
+        ])
+
+    file_path = "hospitals.xlsx"
+    wb.save(file_path)
+
+    return send_file(file_path, as_attachment=True)
+
 @app.route("/edit_pharma/<int:id>", methods=["GET", "POST"])
 def edit_pharma(id):
 
@@ -719,6 +811,46 @@ def delete_pharma(id):
     db.session.commit()
 
     return redirect(url_for("admin"))
+
+@app.route("/export_pharma")
+def export_pharma():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    pharmas = Pharma.query.all()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Pharma"
+
+    ws.append([
+        "ID",
+        "Company Name",
+        "Registration Number",
+        "Website",
+        "Contact Name",
+        "Email",
+        "Mobile",
+        "Category"
+    ])
+
+    for pharma in pharmas:
+        ws.append([
+            pharma.id,
+            pharma.company_name,
+            pharma.registration_number,
+            pharma.website,
+            pharma.contact_name,
+            pharma.email,
+            pharma.mobile,
+            pharma.category
+        ])
+
+    file_path = "pharma.xlsx"
+    wb.save(file_path)
+
+    return send_file(file_path, as_attachment=True)
 
 @app.route("/edit_organizer/<int:id>", methods=["GET", "POST"])
 def edit_organizer(id):
@@ -754,6 +886,52 @@ def delete_organizer(id):
     db.session.commit()
 
     return redirect(url_for("admin"))
+
+@app.route("/export_organizers")
+def export_organizers():
+
+    if "admin" not in session:
+        return redirect(url_for("login"))
+
+    organizers = Organizer.query.all()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Organizers"
+
+    ws.append([
+        "ID",
+        "Organization Name",
+        "Website",
+        "Contact Person",
+        "Email",
+        "Mobile",
+        "Conference Name",
+        "Specialty",
+        "Country",
+        "Venue",
+        "Conference Date"
+    ])
+
+    for organizer in organizers:
+        ws.append([
+            organizer.id,
+            organizer.organization_name,
+            organizer.website,
+            organizer.contact_person,
+            organizer.email,
+            organizer.mobile,
+            organizer.conference_name,
+            organizer.specialty,
+            organizer.country,
+            organizer.venue,
+            organizer.conference_date
+        ])
+
+    file_path = "organizers.xlsx"
+    wb.save(file_path)
+
+    return send_file(file_path, as_attachment=True)
 
 @app.route("/doctor_login", methods=["GET", "POST"])
 def doctor_login():
