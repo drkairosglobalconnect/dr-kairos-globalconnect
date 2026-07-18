@@ -197,11 +197,39 @@ def doctor():
 
     if request.method == "POST":
 
-        # your doctor save code here
+        # Upload files
+        degree = request.files["degree"]
+        registration = request.files["registration_certificate"]
 
+        degree_file = ""
+        registration_file = ""
+
+        if degree and degree.filename:
+            degree_file = secure_filename(degree.filename)
+            degree.save(os.path.join(app.config["UPLOAD_FOLDER"], degree_file))
+
+        if registration and registration.filename:
+            registration_file = secure_filename(registration.filename)
+            registration.save(os.path.join(app.config["UPLOAD_FOLDER"], registration_file))
+
+        # Create Doctor object
+        doctor = Doctor(
+            full_name=request.form["full_name"],
+            email=request.form["email"],
+            mobile=request.form["mobile"],
+            specialty=request.form["specialty"],
+            hospital=request.form["hospital"],
+            experience=request.form["experience"],
+            password=request.form["password"],
+            degree_certificate=degree_file,
+            registration_certificate=registration_file
+        )
+
+        # Save to database
         db.session.add(doctor)
         db.session.commit()
 
+        # Send email
         msg = Message(
             "New Doctor Registration - Dr Kairos GlobalConnect",
             sender=os.environ.get("MAIL_USERNAME"),
@@ -219,11 +247,15 @@ Hospital: {doctor.hospital}
 Experience: {doctor.experience} years
 """
 
-        mail.send(msg)
+        try:
+            mail.send(msg)
+        except Exception as e:
+            print(e)
 
         return redirect(url_for("doctor"))
 
     return render_template("doctor.html")
+
 @app.route("/student", methods=["GET", "POST"])
 def student():
 
