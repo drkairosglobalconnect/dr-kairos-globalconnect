@@ -1035,6 +1035,23 @@ def my_conferences():
         conferences=conference_list
     )
 
+@app.route("/test_mail")
+def test_mail():
+
+    msg = Message(
+        "Test Email",
+        sender=app.config["MAIL_USERNAME"],
+        recipients=[app.config["MAIL_USERNAME"]]
+    )
+
+    msg.body = "This is a test email from Dr Kairos GlobalConnect."
+
+    try:
+        mail.send(msg)
+        return "Email sent successfully!"
+    except Exception as e:
+        return f"Error: {e}"
+
 if __name__ == "__main__":
 
     with app.app_context():
