@@ -1,3 +1,4 @@
+import resend
 import razorpay
 import os
 from openpyxl import Workbook
@@ -5,6 +6,7 @@ from openpyxl import Workbook
 from dotenv import load_dotenv
 
 load_dotenv()
+resend.api_key = os.environ.get("RESEND_API_KEY")
 
 from flask import Flask, render_template, request, redirect, url_for, session, send_file, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
@@ -288,14 +290,29 @@ Dr Kairos GlobalConnect Team
         print("Sending email to:", doctor.email)
 
         try:
-            mail.send(msg)
-            print("Registration email sent successfully.")
+
+            resend.Emails.send({
+                "from": "onboarding@resend.dev",
+                "to": doctor.email,
+                "subject": "Welcome to Dr Kairos GlobalConnect",
+                "html": f"""
+                <h3>Dear Dr. {doctor.full_name},</h3>
+
+                <p>Thank you for registering with Dr Kairos GlobalConnect.</p>
+
+                <p>Your registration has been received successfully.</p>
+
+                <br>
+
+                <p>Regards,<br>
+                Dr Kairos GlobalConnect Team</p>
+                """
+            })
+
+            print("Registration email sent successfully")
+
         except Exception as e:
-            print("Email sending failed:", e)
-
-        return redirect(url_for("doctor"))
-
-    return render_template("doctor.html")
+            print("Email failed:", e)
 
 @app.route("/student", methods=["GET", "POST"])
 def student():
@@ -1113,22 +1130,17 @@ def my_conferences():
 def test_mail():
 
     try:
-        msg = Message(
-            subject="Dr Kairos Test Email",
-            sender=app.config["MAIL_USERNAME"],
-            recipients=[
-                app.config["MAIL_USERNAME"]
-            ]
-        )
 
-        msg.body = "Email test successful from Render."
-
-        mail.send(msg)
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": "drkairosglobalconnect@gmail.com",
+            "subject": "Dr Kairos Test Email",
+            "html": "<h3>Email test successful from Render</h3>"
+        })
 
         return "Email sent successfully!"
 
     except Exception as e:
-        print("MAIL ERROR:", e)
         return f"Email failed: {str(e)}"
 
 if __name__ == "__main__":
