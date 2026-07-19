@@ -194,7 +194,6 @@ def conferences():
 @app.route("/registration")
 def registration():
     return render_template("registration.html")
-
 @app.route("/doctor", methods=["GET", "POST"])
 def doctor():
 
@@ -240,13 +239,13 @@ def doctor():
 
         print("Doctor saved to database")
 
-        # SEND CONFIRMATION EMAIL
+        # Send confirmation email
         msg = Message(
             subject="Welcome to Dr Kairos GlobalConnect",
             sender=app.config["MAIL_USERNAME"],
             recipients=[doctor.email]
-)
-        
+        )
+
         msg.body = f"""
 Dear Dr. {doctor.full_name},
 
@@ -257,17 +256,17 @@ Your registration has been received successfully.
 Regards,
 Dr Kairos GlobalConnect Team
 """
-    print("Sending email to:", doctor.email)
 
-    try:
-        mail.send(msg)
-        print("Registration email sent successfully.")
-    except Exception as e:
-        print("Mail Error:", str(e))
+        print("Sending email to:", doctor.email)
 
-    return redirect(url_for("doctor"))
+        try:
+            mail.send(msg)
+            print("Registration email sent successfully.")
+        except Exception as e:
+            print("Mail Error:", str(e))
 
-# Show registration page on GET request
+        return redirect(url_for("doctor"))
+
     return render_template("doctor.html")
 
 @app.route("/student", methods=["GET", "POST"])
