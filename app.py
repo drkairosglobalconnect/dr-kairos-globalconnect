@@ -18,6 +18,8 @@ app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 app.config["MAIL_TIMEOUT"] = 10
 
 mail = Mail(app)
+print("MAIL USER:", app.config["MAIL_USERNAME"])
+print("MAIL PASS EXISTS:", app.config["MAIL_PASSWORD"] is not None)
 
 client = razorpay.Client(auth=(
     "rzp_test_TEwktCUYs0SlOF",
