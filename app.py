@@ -229,7 +229,7 @@ def doctor():
         db.session.add(doctor)
         db.session.commit()
 
-        # Send email
+        # Email to Admin
         msg = Message(
             "New Doctor Registration - Dr Kairos GlobalConnect",
             sender=os.environ.get("MAIL_USERNAME"),
@@ -247,8 +247,37 @@ Hospital: {doctor.hospital}
 Experience: {doctor.experience} years
 """
 
+        # Email to Doctor
+        confirmation = Message(
+            "Registration Successful - Dr Kairos GlobalConnect",
+            sender=os.environ.get("MAIL_USERNAME"),
+            recipients=[doctor.email]
+        )
+
+        confirmation.body = f"""
+Dear Dr. {doctor.full_name},
+
+Thank you for registering with Dr Kairos GlobalConnect.
+
+Your registration has been received successfully.
+
+Registration Details
+
+Name: {doctor.full_name}
+Email: {doctor.email}
+Mobile: {doctor.mobile}
+Specialty: {doctor.specialty}
+Hospital: {doctor.hospital}
+
+We will contact you regarding upcoming conferences, international medical opportunities, and collaborations.
+
+Best Regards,
+Dr Kairos GlobalConnect Team
+"""
+
         try:
             mail.send(msg)
+            mail.send(confirmation)
         except Exception as e:
             print(e)
 
