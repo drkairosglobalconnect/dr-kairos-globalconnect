@@ -36,9 +36,8 @@ from sqlalchemy import or_
 
 
 UPLOAD_FOLDER = "uploads"
-
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
+os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 app.secret_key = "drkairos_secret_key"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///drkairos.db"
@@ -198,6 +197,8 @@ def doctor():
 
     if request.method == "POST":
 
+        print("Doctor form submitted")
+
         # Upload files
         degree = request.files["degree"]
         registration = request.files["registration_certificate"]
@@ -213,6 +214,9 @@ def doctor():
             registration_file = secure_filename(registration.filename)
             registration.save(os.path.join(app.config["UPLOAD_FOLDER"], registration_file))
 
+        print("Files uploaded")
+
+        # Create doctor object
         doctor = Doctor(
             full_name=request.form["full_name"],
             email=request.form["email"],
@@ -225,26 +229,16 @@ def doctor():
             registration_certificate=registration_file
         )
 
+        print("Doctor object created")
+
+        # Save to database
         db.session.add(doctor)
         db.session.commit()
 
-        msg = Message(
-            "New Doctor Registration",
-            sender=os.environ.get("MAIL_USERNAME"),
-            recipients=[os.environ.get("MAIL_USERNAME")]
-        )
+        print("Doctor saved to database")
 
-        confirmation = Message(
-            "Registration Successful",
-            sender=os.environ.get("MAIL_USERNAME"),
-            recipients=[doctor.email]
-        )
-
-        try:
-            mail.send(msg)
-            mail.send(confirmation)
-        except Exception as e:
-            print("Mail Error:", e)
+        # EMAIL DISABLED FOR TESTING
+        print("Skipping email")
 
         return redirect(url_for("doctor"))
 
