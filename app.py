@@ -10,13 +10,12 @@ from sqlalchemy import or_
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
-
-app.config["MAIL_USERNAME"] = "drkairosglobalconnect@gmail.com"
-app.config["MAIL_PASSWORD"] = "sdvywoanilmpmgw"
+app.config["MAIL_USERNAME"] = os.environ.get("drkairosglobalconnect@gmail.com")
+app.config["MAIL_PASSWORD"] = os.environ.get("sdvywoanilmpmgw")
+app.config["MAIL_TIMEOUT"] = 10
 
 mail = Mail(app)
 
@@ -212,7 +211,6 @@ def doctor():
             registration_file = secure_filename(registration.filename)
             registration.save(os.path.join(app.config["UPLOAD_FOLDER"], registration_file))
 
-        # Create Doctor object
         doctor = Doctor(
             full_name=request.form["full_name"],
             email=request.form["email"],
@@ -225,61 +223,26 @@ def doctor():
             registration_certificate=registration_file
         )
 
-        # Save to database
         db.session.add(doctor)
         db.session.commit()
 
-        # Email to Admin
         msg = Message(
-            "New Doctor Registration - Dr Kairos GlobalConnect",
+            "New Doctor Registration",
             sender=os.environ.get("MAIL_USERNAME"),
             recipients=[os.environ.get("MAIL_USERNAME")]
         )
 
-        msg.body = f"""
-New Doctor Registration Received
-
-Name: {doctor.full_name}
-Email: {doctor.email}
-Mobile: {doctor.mobile}
-Specialization: {doctor.specialty}
-Hospital: {doctor.hospital}
-Experience: {doctor.experience} years
-"""
-
-        # Email to Doctor
         confirmation = Message(
-            "Registration Successful - Dr Kairos GlobalConnect",
+            "Registration Successful",
             sender=os.environ.get("MAIL_USERNAME"),
             recipients=[doctor.email]
         )
-
-        confirmation.body = f"""
-Dear Dr. {doctor.full_name},
-
-Thank you for registering with Dr Kairos GlobalConnect.
-
-Your registration has been received successfully.
-
-Registration Details
-
-Name: {doctor.full_name}
-Email: {doctor.email}
-Mobile: {doctor.mobile}
-Specialty: {doctor.specialty}
-Hospital: {doctor.hospital}
-
-We will contact you regarding upcoming conferences, international medical opportunities, and collaborations.
-
-Best Regards,
-Dr Kairos GlobalConnect Team
-"""
 
         try:
             mail.send(msg)
             mail.send(confirmation)
         except Exception as e:
-            print(e)
+            print("Mail Error:", e)
 
         return redirect(url_for("doctor"))
 
