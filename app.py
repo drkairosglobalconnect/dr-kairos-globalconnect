@@ -3,47 +3,50 @@ import razorpay
 import os
 from openpyxl import Workbook
 
-from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory, send_file
-from flask_mail import Mail, Message
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from flask import Flask, render_template, request, redirect, url_for, session, send_file, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
 from sqlalchemy import or_
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
-app.config["MAIL_TIMEOUT"] = 10
+app.config["MAIL_MAX_EMAILS"] = 1
+app.config["MAIL_TIMEOUT"] = 30
 
 mail = Mail(app)
+
 print("MAIL USER:", app.config["MAIL_USERNAME"])
 print("MAIL PASS EXISTS:", app.config["MAIL_PASSWORD"] is not None)
 
+
 client = razorpay.Client(auth=(
-    "rzp_test_TEwktCUYs0SlOF",
-    "odgRe3XKlIeNcxnyB4s10oi0"
+    os.environ.get("RAZORPAY_KEY_ID"),
+    os.environ.get("RAZORPAY_KEY_SECRET")
 ))
-
-from flask import send_from_directory
-import os
-from werkzeug.utils import secure_filename
-
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import or_
 
 
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-app.secret_key = "drkairos_secret_key"
+app.secret_key = os.environ.get("SECRET_KEY")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///drkairos.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+
+with app.app_context():
+    db.create_all()
 
 class Doctor(db.Model):
 
@@ -237,11 +240,34 @@ def doctor():
 
         print("Doctor saved to database")
 
-        # EMAIL DISABLED FOR TESTING
-        print("Skipping email")
+        # SEND CONFIRMATION EMAIL
+        msg = Message(
+            subject="Welcome to Dr Kairos GlobalConnect",
+            sender=app.config["MAIL_USERNAME"],
+            recipients=[doctor.email]
+)
+        
+        msg.body = f"""
+Dear Dr. {doctor.full_name},
 
-        return redirect(url_for("doctor"))
+Thank you for registering with Dr Kairos GlobalConnect.
 
+Your registration has been received successfully.
+
+Regards,
+Dr Kairos GlobalConnect Team
+"""
+    print("Sending email to:", doctor.email)
+
+    try:
+        mail.send(msg)
+        print("Registration email sent successfully.")
+    except Exception as e:
+        print("Mail Error:", str(e))
+
+    return redirect(url_for("doctor"))
+
+# Show registration page on GET request
     return render_template("doctor.html")
 
 @app.route("/student", methods=["GET", "POST"])
@@ -1038,23 +1064,25 @@ def my_conferences():
 @app.route("/test_mail")
 def test_mail():
 
-    msg = Message(
-        "Test Email",
-        sender=app.config["MAIL_USERNAME"],
-        recipients=[app.config["MAIL_USERNAME"]]
-    )
-
-    msg.body = "This is a test email from Dr Kairos GlobalConnect."
-
     try:
+        msg = Message(
+            subject="Dr Kairos Test Email",
+            sender=app.config["MAIL_USERNAME"],
+            recipients=[
+                app.config["MAIL_USERNAME"]
+            ]
+        )
+
+        msg.body = "Email test successful from Render."
+
         mail.send(msg)
+
         return "Email sent successfully!"
+
     except Exception as e:
-        return f"Error: {e}"
+        print("MAIL ERROR:", e)
+        return f"Email failed: {str(e)}"
 
 if __name__ == "__main__":
-
-    with app.app_context():
-        db.create_all()
 
     app.run(debug=True)
