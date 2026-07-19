@@ -1,4 +1,3 @@
-import sqlite3
 import razorpay
 import os
 from openpyxl import Workbook
@@ -12,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 from sqlalchemy import or_
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -26,7 +26,7 @@ app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
 app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME")
 
 app.config["MAIL_MAX_EMAILS"] = 1
-app.config["MAIL_TIMEOUT"] = 30
+app.config["MAIL_TIMEOUT"] = 10
 
 mail = Mail(app)
 
@@ -39,11 +39,27 @@ client = razorpay.Client(auth=(
     os.environ.get("RAZORPAY_KEY_SECRET")
 ))
 
-
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-app.secret_key = os.environ.get("SECRET_KEY")
+
+ALLOWED_EXTENSIONS = {
+    "pdf",
+    "png",
+    "jpg",
+    "jpeg"
+}
+
+def allowed_file(filename):
+    return (
+        "." in filename
+        and filename.rsplit(".", 1)[1].lower()
+        in ALLOWED_EXTENSIONS
+    )
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "drkairos-secret-key"
+)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///drkairos.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -207,17 +223,17 @@ def doctor():
         print("Doctor form submitted")
 
         # Upload files
-        degree = request.files["degree"]
-        registration = request.files["registration_certificate"]
+        degree = request.files.get("degree")
+        registration = request.files.get("registration_certificate")
 
         degree_file = ""
         registration_file = ""
 
-        if degree and degree.filename:
+        if degree and allowed_file(degree.filename):
             degree_file = secure_filename(degree.filename)
             degree.save(os.path.join(app.config["UPLOAD_FOLDER"], degree_file))
 
-        if registration and registration.filename:
+        if registration and allowed_file(registration.filename):
             registration_file = secure_filename(registration.filename)
             registration.save(os.path.join(app.config["UPLOAD_FOLDER"], registration_file))
 
@@ -231,7 +247,9 @@ def doctor():
             specialty=request.form["specialty"],
             hospital=request.form["hospital"],
             experience=request.form["experience"],
-            password=request.form["password"],
+            password=generate_password_hash(
+    request.form["password"]
+),
             degree_certificate=degree_file,
             registration_certificate=registration_file
         )
@@ -240,7 +258,11 @@ def doctor():
 
         # Save to database
         db.session.add(doctor)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            print(e)
 
         print("Doctor saved to database")
 
@@ -293,12 +315,19 @@ def student():
     mobile=request.form["mobile"],
     whatsapp=request.form["whatsapp"],
 
-    password=request.form["password"]
-
+    password=generate_password_hash(
+    request.form["password"]
 )
 
-        db.session.add(student)
-        db.session.commit()
+)
+        try:
+            db.session.add(student)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("Student Database Error:", e)
+            return "Registration failed"
 
         return redirect(url_for("student"))
 
@@ -322,7 +351,9 @@ def hospital():
             email=request.form["email"],
             mobile=request.form["mobile"],
 
-            password=request.form["password"],
+            password=generate_password_hash(
+    request.form["password"]
+),
    
             city=request.form["city"],
             state=request.form["state"],
@@ -330,8 +361,14 @@ def hospital():
 
         )
 
-        db.session.add(hospital)
-        db.session.commit()
+        try:
+            db.session.add(hospital)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("Hospital Database Error:", e)
+            return "Registration failed"
 
         return redirect(url_for("hospital"))
 
@@ -351,13 +388,21 @@ def pharma():
             email=request.form["email"],
             mobile=request.form["mobile"],
 
-            password=request.form["password"],
+            password=generate_password_hash(
+    request.form["password"]
+),
 
             category=request.form["category"]
         )
 
-        db.session.add(pharma)
-        db.session.commit()
+        try:
+            db.session.add(pharma)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("Pharma Database Error:", e)
+            return "Registration failed"
 
         return redirect(url_for("pharma"))
 
@@ -376,7 +421,9 @@ def organizer():
             email=request.form["email"],
             mobile=request.form["mobile"],
 
-            password=request.form["password"],
+            password=generate_password_hash(
+    request.form["password"]
+),
 
             conference_name=request.form["conference_name"],
             specialty=request.form["specialty"],
@@ -386,8 +433,14 @@ def organizer():
 
         )
 
-        db.session.add(organizer)
-        db.session.commit()
+        try:
+            db.session.add(organizer)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("Organizer Database Error:", e)
+            return "Registration failed"
 
         return redirect(url_for("organizer"))
 
@@ -413,8 +466,14 @@ def add_conference():
 
         )
 
-        db.session.add(conference)
-        db.session.commit()
+        try:
+            db.session.add(conference)
+            db.session.commit()
+
+        except Exception as e:
+            db.session.rollback()
+            print("Conference Database Error:", e)
+            return "Conference creation failed"
 
         return redirect(url_for("conference_list"))
 
@@ -447,7 +506,7 @@ def payment(id):
         "payment.html",
         conference=conference,
         order=order,
-        key_id="rzp_test_TEwO4Vga9LJ7b2"
+        key_id=os.environ.get("RAZORPAY_KEY_ID")
     )
 
 @app.route("/payment_success", methods=["POST"])
@@ -480,8 +539,14 @@ def payment_success():
         payment_id=payment_id
     )
 
-    db.session.add(registration)
-    db.session.commit()
+    try:
+        db.session.add(registration)
+        db.session.commit()
+
+    except Exception as e:
+        db.session.rollback()
+        print("Payment Database Error:", e)
+        return "Payment saved failed"
 
     return redirect(url_for("my_conferences"))
 
@@ -540,7 +605,10 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
-        if username == "admin" and password == "123456":
+        if (
+            username == os.environ.get("ADMIN_USERNAME")
+            and password == os.environ.get("ADMIN_PASSWORD")
+        ):
 
             session["admin"] = True
             return redirect(url_for("admin"))
@@ -990,11 +1058,13 @@ def doctor_login():
         password = request.form["password"]
 
         doctor = Doctor.query.filter_by(
-            email=email,
-            password=password
+            email=email
         ).first()
 
-        if doctor:
+        if doctor and check_password_hash(
+            doctor.password,
+            password
+        ):
 
             session["doctor"] = doctor.id
 
@@ -1004,42 +1074,15 @@ def doctor_login():
 
     return render_template("doctor_login.html")
 
-@app.route("/doctor_dashboard")
-def doctor_dashboard():
-
-    if "doctor" not in session:
-        return redirect(url_for("doctor_login"))
-
-    doctor = Doctor.query.get(session["doctor"])
-
-    return render_template(
-        "doctor_dashboard.html",
-        doctor=doctor
-    )
-
 @app.route("/register_conference/<int:id>")
 def register_conference(id):
 
     if "doctor" not in session:
         return redirect(url_for("doctor_login"))
 
-    existing = ConferenceRegistration.query.filter_by(
-        doctor_id=session["doctor"],
-        conference_id=id
-    ).first()
-
-    if existing:
-        return redirect(url_for("my_conferences"))
-
-    registration = ConferenceRegistration(
-        doctor_id=session["doctor"],
-        conference_id=id
+    return redirect(
+        url_for("payment", id=id)
     )
-
-    db.session.add(registration)
-    db.session.commit()
-
-    return redirect(url_for("my_conferences"))
 
 @app.route("/my_conferences")
 def my_conferences():
@@ -1090,4 +1133,8 @@ def test_mail():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=False
+    )
