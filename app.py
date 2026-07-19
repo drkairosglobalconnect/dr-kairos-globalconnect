@@ -16,7 +16,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
+app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
@@ -265,8 +265,7 @@ Dr Kairos GlobalConnect Team
             mail.send(msg)
             print("Registration email sent successfully.")
         except Exception as e:
-            print("Mail Error:", str(e))
-            traceback.print_exc()
+            print("Email sending failed:", e)
 
         return redirect(url_for("doctor"))
 
