@@ -238,7 +238,7 @@ def logo_test():
 
 @app.route("/doctor", methods=["GET", "POST"])
 def doctor():
-    ...
+
     if request.method == "POST":
 
         print("Doctor form submitted")
@@ -287,23 +287,6 @@ def doctor():
 
         print("Doctor saved to database")
 
-        # Send confirmation email
-        msg = Message(
-            subject="Welcome to Dr Kairos GlobalConnect",
-            sender=app.config["MAIL_USERNAME"],
-            recipients=[doctor.email]
-        )
-
-        msg.body = f"""
-Dear Dr. {doctor.full_name},
-
-Thank you for registering with Dr Kairos GlobalConnect.
-
-Your registration has been received successfully.
-
-Regards,
-Dr Kairos GlobalConnect Team
-"""
         import traceback
 
         print("Sending email to:", doctor.email)
@@ -332,6 +315,10 @@ Dr Kairos GlobalConnect Team
 
         except Exception as e:
             print("Email failed:", e)
+
+        return redirect(url_for("doctor"))
+
+    return render_template("doctor.html")
 
 @app.route("/student", methods=["GET", "POST"])
 def student():
