@@ -38,77 +38,77 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <form method="POST">
 
-<h2>Company Details</h2>
+    <h2>Company Information</h2>
 
-<label>Company Name</label>
-<input type="text" name="company_name" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" name="company_name" required>
+        </div>
 
-<label>Company Registration Number</label>
-<input type="text" name="registration_number" required>
+        <div class="form-group">
+            <label>Registration Number</label>
+            <input type="text" name="registration_number" required>
+        </div>
+    </div>
 
-<label>Website</label>
-<input type="url" name="website">
+    <div class="form-row">
+        <div class="form-group">
+            <label>Website</label>
+            <input type="url" name="website" placeholder="https://example.com">
+        </div>
 
-<h2>Contact Person</h2>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" required>
+                <option value="">Select Category</option>
+                <option>Pharmaceutical Manufacturer</option>
+                <option>Medical Devices</option>
+                <option>Biotechnology</option>
+                <option>Diagnostics</option>
+                <option>Healthcare Products</option>
+                <option>Other</option>
+            </select>
+        </div>
+    </div>
 
-<label>Name</label>
-<input type="text" name="contact_name" required>
+    <h2>Contact Person</h2>
 
-<label>Designation</label>
-<input type="text" name="designation" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Contact Name</label>
+            <input type="text" name="contact_name" required>
+        </div>
 
-<label>Email</label>
-<input type="email" name="email" required>
+        <div class="form-group">
+            <label>Designation</label>
+            <input type="text" name="designation" required>
+        </div>
+    </div>
 
-<label>Mobile</label>
-<input type="tel" name="mobile" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
 
-<h2>Business Category</h2>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" name="mobile" required>
+        </div>
+    </div>
 
-<select name="category" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create Password" required>
+        </div>
 
-<option value="">Select Category</option>
+        <div class="form-group"></div>
+    </div>
 
-<option>Pharmaceutical</option>
-
-<option>Medical Devices</option>
-
-<option>Biotechnology</option>
-
-<option>Diagnostics</option>
-
-</select>
-
-<h2>Upload Documents</h2>
-
-<label>Company Registration Certificate</label>
-
-<input type="file">
-
-<label>Company Profile</label>
-
-<input type="file">
-
-<label>Password</label>
-
-<input
-    type="password"
-    name="password"
-    placeholder="Enter Password"
-    required>
-
-<br><br>
-
-<button type="submit">
-
-Register Company – ₹777
-
-</button>
+    <button type="submit" class="submit-btn">
+        Register Now
+    </button>
 
 </form>
-
-</section>
-
-</body>
-
-</html>

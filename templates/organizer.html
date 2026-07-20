@@ -38,69 +38,95 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <form method="POST">
 
-<h2>Organization Details</h2>
+    <h2>Organization Information</h2>
 
-<label>Organization Name</label>
-<input type="text" name="organization_name" required>
+    <div class="form-row">
 
-<label>Website</label>
-<input type="url" name="website">
+        <div class="form-group">
+            <label>Organization Name</label>
+            <input type="text" name="organization_name" required>
+        </div>
 
-<label>Contact Person</label>
-<input type="text" name="contact_person" required>
+        <div class="form-group">
+            <label>Website</label>
+            <input type="url" name="website" placeholder="https://example.com">
+        </div>
 
-<label>Email</label>
-<input type="email" name="email" required>
+    </div>
 
-<label>Mobile</label>
-<input type="tel" name="mobile" required>
+    <h2>Contact Person</h2>
 
-<h2>Conference Details</h2>
+    <div class="form-row">
 
-<label>Conference Name</label>
-<input type="text" name="conference_name" required>
+        <div class="form-group">
+            <label>Contact Person</label>
+            <input type="text" name="contact_person" required>
+        </div>
 
-<label>Medical Specialty</label>
-<input type="text" name="specialty" required>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
 
-<label>Country</label>
-<input type="text" name="country" required>
+    </div>
 
-<label>Venue</label>
-<input type="text" name="venue" required>
+    <div class="form-row">
 
-<label>Date</label>
-<input type="date" name="conference_date" required>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" name="mobile" required>
+        </div>
 
-<h2>Upload Documents</h2>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create Password" required>
+        </div>
 
-<label>Conference Brochure</label>
-<input type="file">
+    </div>
 
-<label>Organization Profile</label>
-<input type="file">
+    <h2>Conference Details</h2>
 
-<label>Password</label>
+    <div class="form-row">
 
-<input
-    type="password"
-    name="password"
-    placeholder="Enter Password"
-    required>
+        <div class="form-group">
+            <label>Conference Name</label>
+            <input type="text" name="conference_name" required>
+        </div>
 
+        <div class="form-group">
+            <label>Medical Specialty</label>
+            <input type="text" name="specialty" required>
+        </div>
 
-<br><br>
+    </div>
 
-<button type="submit">
+    <div class="form-row">
 
-Register Organizer – ₹777
+        <div class="form-group">
+            <label>Country</label>
+            <input type="text" name="country" required>
+        </div>
 
-</button>
+        <div class="form-group">
+            <label>Venue</label>
+            <input type="text" name="venue" required>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+
+        <div class="form-group">
+            <label>Conference Date</label>
+            <input type="date" name="conference_date" required>
+        </div>
+
+        <div class="form-group"></div>
+
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Register Now
+    </button>
 
 </form>
-
-</section>
-
-</body>
-
-</html>

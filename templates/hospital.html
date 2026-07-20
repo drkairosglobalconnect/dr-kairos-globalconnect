@@ -39,82 +39,101 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <form method="POST">
 
-<h2>Hospital Details</h2>
+    <h2>Hospital Information</h2>
 
-<label>Hospital Name</label>
-<input type="text" name="hospital_name" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Hospital Name</label>
+            <input type="text" name="hospital_name" required>
+        </div>
 
-<select name="hospital_type" required>
+        <div class="form-group">
+            <label>Hospital Type</label>
+            <input type="text" name="hospital_type" required>
+        </div>
+    </div>
 
-<option>Government</option>
-<option>Private</option>
-<option>Teaching Hospital</option>
-<option>Speciality Hospital</option>
-<option>Multi-Speciality Hospital</option>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Number of Beds</label>
+            <input type="number" name="beds" required>
+        </div>
 
-</select>
+        <div class="form-group">
+            <label>Number of Doctors</label>
+            <input type="number" name="doctors" required>
+        </div>
+    </div>
 
-<label>Number of Beds</label>
-<input type="number" name="beds" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Specialties</label>
+            <input type="text" name="specialties" placeholder="Cardiology, Neurology..." required>
+        </div>
 
-<label>Number of Doctors</label>
-<input type="number" name="doctors" required>
+        <div class="form-group"></div>
+    </div>
 
-<label>Medical Specialties</label>
-<input type="text" name="specialties" required>
+    <h2>Contact Person</h2>
 
-<h2>Contact Person</h2>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Contact Name</label>
+            <input type="text" name="contact_name" required>
+        </div>
 
-<label>Name</label>
-<input type="text" name="contact_name" required>
+        <div class="form-group">
+            <label>Designation</label>
+            <input type="text" name="designation" required>
+        </div>
+    </div>
 
-<label>Designation</label>
-<input type="text" name="designation" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+        </div>
 
-<label>Email</label>
-<input type="email" name="email" required>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" name="mobile" required>
+        </div>
+    </div>
 
-<label>Mobile</label>
-<input type="tel" name="mobile" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create Password" required>
+        </div>
 
-<h2>Address</h2>
+        <div class="form-group"></div>
+    </div>
 
-<label>City</label>
-<input type="text" name="city" required>
+    <h2>Location</h2>
 
-<label>State</label>
-<input type="text" name="state" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" name="city" required>
+        </div>
 
-<label>Country</label>
-<input type="text" name="country" required>
+        <div class="form-group">
+            <label>State</label>
+            <input type="text" name="state" required>
+        </div>
+    </div>
 
-<h2>Upload Documents</h2>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Country</label>
+            <input type="text" name="country" required>
+        </div>
 
-<label>Hospital Registration Certificate</label>
-<input type="file">
+        <div class="form-group"></div>
+    </div>
 
-<label>Hospital Profile</label>
-<input type="file">
-
-<label>Password</label>
-
-<input
-    type="password"
-    name="password"
-    placeholder="Enter Password"
-    required>
-
-<br><br>
-
-<button type="submit">
-Register Hospital – ₹777
-
-</button>
+    <button type="submit" class="submit-btn">
+        Register Now
+    </button>
 
 </form>
-
-</section>
-
-</body>
-
-</html>
