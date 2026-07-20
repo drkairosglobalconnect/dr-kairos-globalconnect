@@ -724,3 +724,71 @@ footer p{
     max-width:350px;
 }
 }
+/* Doctor Registration Form */
+
+.registration-container {
+    width: 60%;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.registration-container h2 {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 30px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form label {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.registration-form input,
+.registration-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.registration-form input:focus,
+.registration-form select:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+.registration-form button {
+    margin-top: 25px;
+    padding: 12px;
+    background: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background: #003d82;
+}
+
+
+/* Mobile View */
+@media(max-width:768px){
+
+    .registration-container{
+        width:90%;
+        padding:25px;
+    }
+
+}
