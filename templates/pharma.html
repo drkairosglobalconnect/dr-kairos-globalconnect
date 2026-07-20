@@ -22,93 +22,110 @@ href="{{ url_for('static', filename='style.css') }}">
 </div>
 
 <ul>
-
 <li><a href="/">Home</a></li>
 <li><a href="/registration">Registration</a></li>
-
 </ul>
 
 </nav>
 
-<section class="form-section">
+<section class="doctor-form-container">
 
 <h1>Pharmaceutical Company Registration</h1>
 
-<p><b>Partnership Registration Fee: ₹777</b></p>
+<p class="fee"><b>Partnership Registration Fee: ₹777</b></p>
 
 <form method="POST">
 
-    <h2>Company Information</h2>
+<h2>Company Information</h2>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" name="company_name" required>
-        </div>
+<div class="form-row">
 
-        <div class="form-group">
-            <label>Registration Number</label>
-            <input type="text" name="registration_number" required>
-        </div>
-    </div>
+<div class="form-group">
+<label>Company Name</label>
+<input type="text" name="company_name" required>
+</div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Website</label>
-            <input type="url" name="website" placeholder="https://example.com">
-        </div>
+<div class="form-group">
+<label>Registration Number</label>
+<input type="text" name="registration_number" required>
+</div>
 
-        <div class="form-group">
-            <label>Category</label>
-            <select name="category" required>
-                <option value="">Select Category</option>
-                <option>Pharmaceutical Manufacturer</option>
-                <option>Medical Devices</option>
-                <option>Biotechnology</option>
-                <option>Diagnostics</option>
-                <option>Healthcare Products</option>
-                <option>Other</option>
-            </select>
-        </div>
-    </div>
+</div>
 
-    <h2>Contact Person</h2>
+<div class="form-row">
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Contact Name</label>
-            <input type="text" name="contact_name" required>
-        </div>
+<div class="form-group">
+<label>Website</label>
+<input type="url" name="website" placeholder="https://example.com">
+</div>
 
-        <div class="form-group">
-            <label>Designation</label>
-            <input type="text" name="designation" required>
-        </div>
-    </div>
+<div class="form-group">
+<label>Category</label>
+<select name="category" required>
+<option value="">Select Category</option>
+<option>Pharmaceutical Manufacturer</option>
+<option>Medical Devices</option>
+<option>Biotechnology</option>
+<option>Diagnostics</option>
+<option>Healthcare Products</option>
+<option>Other</option>
+</select>
+</div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" required>
-        </div>
+</div>
 
-        <div class="form-group">
-            <label>Mobile Number</label>
-            <input type="tel" name="mobile" required>
-        </div>
-    </div>
+<h2>Contact Person</h2>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Create Password" required>
-        </div>
+<div class="form-row">
 
-        <div class="form-group"></div>
-    </div>
+<div class="form-group">
+<label>Contact Name</label>
+<input type="text" name="contact_name" required>
+</div>
 
-    <button type="submit" class="submit-btn">
-        Register Now
-    </button>
+<div class="form-group">
+<label>Designation</label>
+<input type="text" name="designation" required>
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Email Address</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="form-group">
+<label>Mobile Number</label>
+<input type="tel" name="mobile" required>
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group">
+<label>Password</label>
+<input type="password" name="password" placeholder="Create Password" required>
+</div>
+
+<div class="form-group">
+<label>&nbsp;</label>
+<input type="text" disabled style="visibility:hidden;">
+</div>
+
+</div>
+
+<button type="submit" class="submit-btn">
+Register Now
+</button>
 
 </form>
+
+</section>
+
+</body>
+
+</html>
