@@ -198,28 +198,44 @@ class ConferenceRegistration(db.Model):
 def home():
     return render_template("index.html")
 
+
 @app.route("/uploads/<filename>")
 def uploaded_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+
 
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+
 @app.route("/services")
 def services():
     return render_template("services.html")
+
 
 @app.route("/conferences")
 def conferences():
     return render_template("conferences.html")
 
+
 @app.route("/registration")
 def registration():
     return render_template("registration.html")
+
+@app.route("/founder")
+def founder():
+    return render_template("founder.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
 @app.route("/doctor", methods=["GET", "POST"])
 def doctor():
-
+    ...
     if request.method == "POST":
 
         print("Doctor form submitted")
@@ -602,17 +618,17 @@ def delete_conference(id):
 
     return redirect(url_for("conference_list"))
 
-@app.route("/partners")
-def partners():
-    return render_template("partners.html")
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
-@app.route("/founder")
-def founder():
-    return render_template("founder.html")
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
+@app.route("/disclaimer")
+def disclaimer():
+    return render_template("disclaimer.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

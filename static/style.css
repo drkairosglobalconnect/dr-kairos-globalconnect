@@ -1,698 +1,694 @@
+/* ==========================================
+   DR KAIROS GLOBALCONNECT
+   GLOBAL STYLES
+========================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     background:#f4f8fc;
+    color:#333;
+    line-height:1.7;
+    overflow-x:hidden;
 }
 
-/* Navigation */
+/* ==========================================
+   NAVIGATION
+========================================== */
 
 nav{
     background:#0056b3;
-    color:white;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 60px;
+    padding:12px 50px;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+    width:75px;
+    height:75px;
+    object-fit:contain;
 }
 
 .logo h2{
-    color:white;
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
 }
 
 nav ul{
     display:flex;
     list-style:none;
-}
-
-nav ul li{
-    margin-left:25px;
+    gap:20px;
 }
 
 nav ul li a{
     color:white;
     text-decoration:none;
-    font-size:18px;
+    font-weight:600;
+    padding:10px 15px;
+    border-radius:8px;
     transition:.3s;
 }
 
 nav ul li a:hover{
-    color:#ffd700;
+    background:white;
+    color:#0056b3;
 }
 
-/* Hero Section */
+/* ==========================================
+   HERO SECTION
+========================================== */
 
 .hero{
+    min-height:88vh;
+    background:linear-gradient(135deg,#0056b3,#0096db);
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:80px 60px;
+    color:white;
+    padding:80px 40px;
+}
+
+.hero-content{
+    max-width:1000px;
 }
 
 .hero h1{
-    font-size:50px;
-    color:#0056b3;
+    font-size:55px;
     margin-bottom:20px;
 }
 
 .hero h2{
-    color:#222;
-    margin-bottom:20px;
+    font-size:30px;
+    font-weight:500;
+    margin-bottom:25px;
 }
 
 .hero p{
-    font-size:20px;
-    line-height:35px;
-    width:80%;
-    margin:auto;
+    font-size:19px;
+    margin-bottom:40px;
+    line-height:1.9;
 }
 
-/* Buttons */
+/* Hero Buttons */
 
-.buttons{
-    margin-top:50px;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:18px;
 }
 
 .btn{
     display:inline-block;
-    margin:10px;
-    padding:15px 30px;
-    background:#0056b3;
-    color:white;
+    background:white;
+    color:#0056b3;
     text-decoration:none;
+    padding:14px 24px;
     border-radius:8px;
+    font-weight:bold;
     transition:.3s;
 }
 
 .btn:hover{
     background:#003d80;
+    color:white;
+    transform:translateY(-4px);
 }
-/* About Page */
 
-.about-section,
-.mission,
-.vision,
-.founder{
+/* ==========================================
+   HOME INTRO
+========================================== */
 
-    padding:70px;
-
+.home-block{
+    padding:70px 60px;
+    background:white;
     text-align:center;
-
 }
+
+.home-block h2{
+    font-size:38px;
+    color:#0056b3;
+    margin-bottom:20px;
+}
+
+.home-block p{
+    max-width:950px;
+    margin:auto;
+    font-size:18px;
+    color:#555;
+    line-height:1.9;
+}
+
+/* ==========================================
+   HOME CARDS
+========================================== */
+
+.connect-section,
+.services{
+    padding:70px 60px;
+    text-align:center;
+}
+
+.connect-section h2,
+.services h2{
+    font-size:38px;
+    color:#0056b3;
+    margin-bottom:40px;
+}
+
+.card-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.home-card{
+    width:300px;
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.home-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+
+.home-card h3{
+    color:#0056b3;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.home-card p{
+    color:#555;
+    line-height:1.8;
+}
+/* ==========================================
+   ABOUT PAGE
+========================================== */
 
 .about-section{
+    padding:70px 60px;
+    text-align:center;
+    background:#f4f8fc;
+}
+
+.about-logo{
+    margin-bottom:25px;
+}
+
+.about-logo img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+.about-section h1{
+    font-size:42px;
+    color:#0056b3;
+    margin-bottom:25px;
+}
+
+.about-section p{
+    max-width:1000px;
+    margin:auto;
+    font-size:18px;
+    color:#555;
+    line-height:1.9;
+}
+
+/* ==========================================
+   MISSION & VISION
+========================================== */
+
+.mission-vision{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:60px;
+}
+
+.mission-card,
+.vision-card{
+
+    flex:1;
+    min-width:320px;
+    max-width:500px;
 
     background:white;
+    padding:35px;
+
+    border-radius:15px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+    transition:.3s;
+}
+
+.mission-card:hover,
+.vision-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
 
 }
 
-.mission{
+.mission-card h2,
+.vision-card h2{
 
-    background:#f5f9ff;
+    color:#0056b3;
+
+    margin-bottom:20px;
+
+    font-size:30px;
 
 }
 
-.vision{
+.mission-card p,
+.vision-card p{
 
-    background:white;
+    font-size:17px;
+
+    color:#555;
+
+    line-height:1.9;
 
 }
+
+/* ==========================================
+   FOUNDER
+========================================== */
 
 .founder{
 
-    background:#eaf4ff;
+    padding:70px 60px;
+
+    background:#f4f8fc;
 
 }
 
-.about-section h1,
-.mission h2,
-.vision h2,
 .founder h2{
-
-    color:#0056b3;
-
-    margin-bottom:20px;
-
-    font-size:40px;
-
-}
-
-.about-section p,
-.mission p,
-.vision p,
-.founder p{
-
-    width:80%;
-
-    margin:auto;
-
-    line-height:35px;
-
-    font-size:20px;
-
-    color:#444;
-
-}
-
-.founder h3{
-
-    margin:20px;
-
-    color:#222;
-
-    font-size:28px;
-
-}
-/* Services Page */
-
-.services-page{
-
-    padding:70px;
 
     text-align:center;
 
-}
-
-.services-page h1{
-
     color:#0056b3;
 
-    font-size:42px;
-
-    margin-bottom:20px;
-
-}
-
-.services-page p{
-
-    font-size:20px;
+    font-size:40px;
 
     margin-bottom:40px;
 
 }
 
-.service-grid{
+.founder-card{
+
+    max-width:1100px;
+
+    margin:auto;
 
     display:flex;
 
-    flex-wrap:wrap;
+    gap:35px;
 
-    justify-content:center;
-
-    gap:25px;
-
-}
-
-.service-card{
-
-    width:320px;
+    align-items:center;
 
     background:white;
 
-    padding:25px;
+    padding:35px;
 
-    border-radius:10px;
+    border-radius:18px;
 
-    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
 
     transition:.3s;
 
 }
 
-.service-card:hover{
+.founder-card:hover{
 
     transform:translateY(-8px);
 
 }
 
-.service-card h2{
+.founder-photo img{
+
+    width:220px;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    border:5px solid #0056b3;
+
+}
+
+.founder-info{
+
+    flex:1;
+
+}
+
+.founder-info h3{
 
     color:#0056b3;
 
-    margin-bottom:15px;
+    font-size:30px;
+
+    margin-bottom:10px;
 
 }
 
-.service-card ul{
+.founder-info h4{
 
-    text-align:left;
-
-    line-height:2;
-
-}
-/* Conference Page */
-
-.conference-page{
-
-    padding:70px;
-
-    text-align:center;
-
-}
-
-.conference-page h1{
-
-    color:#0056b3;
-
-    font-size:42px;
+    color:#666;
 
     margin-bottom:20px;
 
 }
 
-.conference-page p{
+.founder-info p{
 
-    font-size:18px;
+    color:#555;
 
-    margin-bottom:20px;
+    line-height:1.9;
 
-}
-
-.conference-grid{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:30px;
+    font-size:17px;
 
 }
 
-.conference-card{
+/* ==========================================
+   CALL TO ACTION
+========================================== */
 
-    width:340px;
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:12px;
-
-    box-shadow:0 0 12px rgba(0,0,0,0.15);
-
-    transition:.3s;
-
-}
-
-.conference-card:hover{
-
-    transform:translateY(-8px);
-
-}
-
-.conference-card h2{
-
-    color:#0056b3;
-
-    margin-bottom:15px;
-
-}
-
-.conference-card button{
-
-    margin-top:20px;
+.cta{
 
     background:#0056b3;
 
     color:white;
 
-    border:none;
+    text-align:center;
 
-    padding:12px 25px;
-
-    border-radius:8px;
-
-    cursor:pointer;
+    padding:70px 40px;
 
 }
 
-.conference-card button:hover{
+.cta h2{
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+.cta p{
+
+    font-size:18px;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
 
     background:#003d80;
 
-}
-/* Registration Form */
+    color:white;
 
-.form-section{
+    text-align:center;
 
-padding:60px;
-
-max-width:900px;
-
-margin:auto;
+    padding:35px;
 
 }
 
-.form-section h1{
+footer h3{
 
-text-align:center;
+    font-size:28px;
 
-color:#0056b3;
-
-margin-bottom:20px;
+    margin-bottom:15px;
 
 }
 
-.form-section p{
+footer p{
 
-text-align:center;
+    margin:8px 0;
 
-font-size:20px;
-
-margin-bottom:30px;
+    font-size:16px;
 
 }
+/* ==========================================
+   REGISTRATION PAGE
+========================================== */
 
-form{
-
-background:white;
-
-padding:40px;
-
-border-radius:12px;
-
-box-shadow:0 0 15px rgba(0,0,0,.15);
-
-}
-
-form h2{
-
-color:#0056b3;
-
-margin-top:30px;
-
-margin-bottom:15px;
-
-}
-
-form label{
-
-display:block;
-
-margin-top:15px;
-
-font-weight:bold;
-
-}
-
-form input,
-form select{
-
-width:100%;
-
-padding:12px;
-
-margin-top:5px;
-
-border:1px solid #ccc;
-
-border-radius:6px;
-
-}
-
-form button{
-
-margin-top:30px;
-
-width:100%;
-
-padding:15px;
-
-background:#0056b3;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-font-size:18px;
-
-cursor:pointer;
-
-}
-
-form button:hover{
-
-background:#003d80;
-
-}
-/* Registration Page */
-
-.registration{
-    padding:60px;
+.registration-section{
+    padding:70px 60px;
+    background:#f4f8fc;
     text-align:center;
 }
 
-.registration h1{
+.registration-section h1{
     color:#0056b3;
-    margin-bottom:40px;
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.registration-section p{
+    max-width:900px;
+    margin:0 auto 50px;
+    color:#555;
+    font-size:18px;
 }
 
 .registration-container{
+    max-width:800px;
+    margin:auto;
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
+    flex-direction:column;
     gap:25px;
 }
 
 .registration-card{
-    width:250px;
     background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 12px rgba(0,0,0,0.15);
-    transition:0.3s;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:.3s;
+    text-align:left;
 }
 
 .registration-card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
 }
 
-.registration-card h2{
+.registration-card h3{
     color:#0056b3;
     margin-bottom:15px;
+    font-size:26px;
 }
 
 .registration-card p{
     margin-bottom:20px;
-}
-/* Dashboard */
-
-.dashboard{
-
-display:flex;
-
-justify-content:center;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-margin:40px;
-
+    line-height:1.8;
 }
 
-.card{
+/* ==========================================
+   CONTACT PAGE
+========================================== */
 
-width:220px;
-
-background:#0d6efd;
-
-color:white;
-
-padding:25px;
-
-text-align:center;
-
-border-radius:10px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-
+.contact-section{
+    padding:70px 60px;
+    background:white;
+    text-align:center;
 }
 
-.card h2{
-
-font-size:40px;
-
+.contact-section h1{
+    color:#0056b3;
+    font-size:42px;
+    margin-bottom:20px;
 }
 
-table{
-
-width:95%;
-
-margin:auto;
-
-border-collapse:collapse;
-
+.contact-container{
+    max-width:900px;
+    margin:auto;
 }
 
-table th{
-
-background:#0d6efd;
-
-color:white;
-
-padding:12px;
-
+.contact-box{
+    background:#f4f8fc;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
 }
 
-table td{
-
-padding:10px;
-
-text-align:center;
-
-border:1px solid #ddd;
-
+.contact-box h3{
+    color:#0056b3;
+    margin-bottom:20px;
 }
 
-table tr:nth-child(even){
-
-background:#f5f5f5;
-
+.contact-box p{
+    font-size:18px;
+    margin:12px 0;
+    color:#555;
 }
 
-nav{
+/* ==========================================
+   ANIMATIONS
+========================================== */
 
-background:#0d6efd;
-
-color:white;
-
-padding:20px;
-
-text-align:center;
-
-}
-.login-box{
-
-width:350px;
-
-margin:100px auto;
-
-background:white;
-
-padding:30px;
-
-border-radius:10px;
-
-box-shadow:0 0 15px rgba(0,0,0,.2);
-
+.home-card,
+.mission-card,
+.vision-card,
+.registration-card,
+.founder-card,
+.contact-box{
+    transition:all .3s ease;
 }
 
-.login-box h1{
-
-text-align:center;
-
-margin-bottom:20px;
-
+.home-card:hover,
+.mission-card:hover,
+.vision-card:hover,
+.registration-card:hover,
+.founder-card:hover,
+.contact-box:hover{
+    transform:translateY(-8px);
 }
 
-.login-box input{
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
 
-width:100%;
+@media(max-width:768px){
 
-padding:10px;
+    nav{
+        flex-direction:column;
+        padding:15px;
+    }
 
-margin:10px 0;
+    .logo{
+        flex-direction:column;
+        text-align:center;
+    }
 
-}
+    .logo img{
+        width:70px;
+        height:70px;
+    }
 
-.login-box button{
+    .logo h2{
+        font-size:22px;
+    }
 
-width:100%;
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+        margin-top:15px;
+    }
 
-padding:12px;
+    nav ul li a{
+        font-size:15px;
+        padding:8px 10px;
+    }
 
-background:#0d6efd;
+    .hero{
+        padding:60px 20px;
+        min-height:auto;
+    }
 
-color:white;
+    .hero h1{
+        font-size:34px;
+    }
 
-border:none;
+    .hero h2{
+        font-size:24px;
+    }
 
-cursor:pointer;
+    .hero p{
+        font-size:17px;
+    }
 
-font-size:18px;
+    .hero-buttons{
+        flex-direction:column;
+    }
 
-}
-table a{
+    .btn{
+        width:100%;
+        max-width:320px;
+    }
 
-background:red;
+    .about-section,
+    .home-block,
+    .services,
+    .connect-section,
+    .registration-section,
+    .contact-section,
+    .founder{
+        padding:50px 20px;
+    }
 
-color:white;
+    .mission-vision{
+        padding:20px;
+        flex-direction:column;
+    }
 
-padding:8px 15px;
+    .mission-card,
+    .vision-card{
+        max-width:100%;
+    }
 
-text-decoration:none;
+    .founder-card{
+        flex-direction:column;
+        text-align:center;
+    }
 
-border-radius:5px;
+    .founder-photo img{
+        width:180px;
+        height:220px;
+    }
 
-}
+    .card-container{
+        flex-direction:column;
+        align-items:center;
+    }
 
-table a:hover{
+    .home-card{
+        width:100%;
+        max-width:350px;
+    }
 
-background:darkred;
-
-}
-.action-btn{
-
-padding:8px 15px;
-
-margin:5px;
-
-border-radius:5px;
-
-text-decoration:none;
-
-color:white;
-
-}
-
-.edit-btn{
-
-background:#28a745;
-
-}
-
-.delete-btn{
-
-background:#dc3545;
-
-}
-input[type=text]{
-
-padding:10px;
-
-width:300px;
-
-border:1px solid #ccc;
-
-border-radius:5px;
-
-}
-
-button{
-
-padding:10px 20px;
-
-background:#0d6efd;
-
-color:white;
-
-border:none;
-
-border-radius:5px;
-
-cursor:pointer;
-
-}
-
-button:hover{
-
-background:#084298;
-
+    .registration-container{
+        width:100%;
+    }
 }

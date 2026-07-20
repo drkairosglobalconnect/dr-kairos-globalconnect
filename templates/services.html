@@ -6,115 +6,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Services | Dr Kairos GlobalConnect</title>
+    <title>Services - Dr Kairos GlobalConnect</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
+
 <body>
+
+
+<!-- ================= NAVIGATION ================= -->
 
 <nav>
 
     <div class="logo">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Dr Kairos GlobalConnect Logo">
+
         <h2>Dr Kairos GlobalConnect</h2>
+
     </div>
+
 
     <ul>
 
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/conferences">Conferences</a></li>
-        <li><a href="/registration">Registration</a></li>
-        <li><a href="/partners">Partners</a></li>
-        <li><a href="/contact">Contact</a></li>
+       <ul>
+
+    <li><a href="/">Home</a></li>
+
+    <li><a href="/about">About Us</a></li>
+
+    <li><a href="/services">Services</a></li>
+
+    <li><a href="/conferences">Conferences</a></li>
+
+    <li><a href="/registration">Registration</a></li>
+
+    <li><a href="/founder">Founder</a></li>
+
+    <li><a href="/contact">Contact</a></li>
+
+</ul>
 
     </ul>
 
 </nav>
 
-<section class="services-page">
+<!-- ================= SERVICES HEADER ================= -->
 
-<h1>Our Services</h1>
 
-<p>
-We provide healthcare networking services for professionals and organizations worldwide.
-</p>
+<section class="about-section">
 
-<div class="service-grid">
+    <h1>Our Services</h1>
 
-<div class="service-card">
-
-<h2>👨‍⚕️ Doctors</h2>
-
-<ul>
-<li>Conference Updates</li>
-<li>Registration Assistance</li>
-<li>Global Networking</li>
-<li>Research Opportunities</li>
-<li>Career Opportunities</li>
-</ul>
-
-</div>
-
-<div class="service-card">
-
-<h2>🎓 Students</h2>
-
-<ul>
-<li>Career Guidance</li>
-<li>Internship Assistance</li>
-<li>Skill Development</li>
-<li>Conference Updates</li>
-<li>Mentorship</li>
-</ul>
-
-</div>
-
-<div class="service-card">
-
-<h2>🏥 Hospitals</h2>
-
-<ul>
-<li>International Partnerships</li>
-<li>Doctor Development</li>
-<li>Medical Conferences</li>
-<li>Research Collaboration</li>
-</ul>
-
-</div>
-
-<div class="service-card">
-
-<h2>💊 Pharmaceutical Companies</h2>
-
-<ul>
-<li>Sponsorship Opportunities</li>
-<li>Brand Promotion</li>
-<li>Doctor Engagement</li>
-<li>Business Partnerships</li>
-</ul>
-
-</div>
-
-<div class="service-card">
-
-<h2>🌍 Conference Organizers</h2>
-
-<ul>
-<li>Conference Promotion</li>
-<li>Doctor Outreach</li>
-<li>Registration Support</li>
-<li>Healthcare Marketing</li>
-</ul>
-
-</div>
-
-</div>
+    <p>
+        Dr Kairos GlobalConnect provides a trusted global healthcare
+        networking platform connecting professionals, institutions,
+        and organizations across the medical ecosystem.
+    </p>
 
 </section>
+
+<!-- ================= SERVICE CARDS ================= -->
+
+
+<section class="services">
+
+
+<div class="card-container">
+
+
+<div class="home-card">
+
+<h3>🌍 Global Medical Conferences</h3>
+
+<p>
+Connecting healthcare professionals with international
+medical conferences, events, and knowledge-sharing platforms.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>👨‍⚕ Healthcare Networking</h3>
+
+<p>
+Building meaningful connections between doctors,
+healthcare professionals, and organizations worldwide.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🎓 Student Opportunities</h3>
+
+<p>
+Supporting medical students with learning opportunities,
+professional growth, and global exposure.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🏥 Hospital Collaboration</h3>
+
+<p>
+Helping hospitals connect with global healthcare
+partners and professional networks.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>💊 Pharmaceutical Partnerships</h3>
+
+<p>
+Creating opportunities for pharmaceutical companies
+to collaborate with healthcare communities.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🤝 Research & Knowledge Sharing</h3>
+
+<p>
+Promoting medical research collaboration and
+exchange of healthcare knowledge.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+
+
+<section class="cta">
+
+<h2>
+Connect With Global Healthcare Opportunities
+</h2>
+
+<p>
+Join Dr Kairos GlobalConnect and become part of a worldwide healthcare network.
+</p>
+
+
+<a href="/registration" class="btn">
+Register Now
+</a>
+
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h3>
+Dr Kairos GlobalConnect
+</h3>
+
+<p>
+Connecting Doctors to Global Medical Opportunities
+</p>
+
+<p>
+Email: drkairosglobalconnect@gmail.com
+</p>
+
+<p>
+Privacy Policy | Terms & Conditions | Disclaimer
+</p>
+
+<p>
+© 2026 Dr Kairos GlobalConnect. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
 
 </body>
 

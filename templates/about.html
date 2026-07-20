@@ -2,79 +2,81 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>About Us | Dr Kairos GlobalConnect</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 
 <body>
 
 <!-- Navigation -->
-
 <nav>
 
     <div class="logo">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Dr Kairos Logo">
+
         <h2>Dr Kairos GlobalConnect</h2>
+
     </div>
 
     <ul>
-
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/about">About Us</a></li>
         <li><a href="/services">Services</a></li>
         <li><a href="/conferences">Conferences</a></li>
         <li><a href="/registration">Registration</a></li>
-        <li><a href="/partners">Partners</a></li>
+        <li><a href="/founder">Founder</a></li>
         <li><a href="/contact">Contact</a></li>
-
     </ul>
 
 </nav>
-
 <!-- About -->
 
 <section class="about-section">
 
-<h1>About Dr Kairos GlobalConnect</h1>
+    <h1>About Dr Kairos GlobalConnect</h1>
 
-<p>
-
-Dr Kairos GlobalConnect is a global healthcare networking platform dedicated to connecting healthcare professionals and organizations with international conferences, education, research collaborations, partnerships, and career opportunities.
-
-</p>
-
-</section>
-
-<!-- Mission -->
-
-<section class="mission">
-
-<h2>Our Mission</h2>
-
-<p>
-
-To empower healthcare professionals through global education, networking, collaboration, innovation, and international medical opportunities.
-
-</p>
+    <p>
+        Dr Kairos GlobalConnect is a global healthcare networking platform
+        dedicated to connecting healthcare professionals, hospitals,
+        students, pharmaceutical companies, conference organizers,
+        medical colleges and healthcare organizations through
+        international conferences, education, research collaborations,
+        partnerships and career opportunities.
+    </p>
 
 </section>
 
-<!-- Vision -->
+<!-- Mission & Vision -->
 
-<section class="vision">
+<section class="mission-vision">
 
-<h2>Our Vision</h2>
+    <div class="mission-card">
 
-<p>
+        <h2>Our Mission</h2>
 
-To become the world's most trusted healthcare networking platform connecting doctors, students, hospitals, researchers, pharmaceutical companies, and healthcare organizations.
+        <p>
+            To empower healthcare professionals through global education,
+            networking, collaboration, innovation and international
+            medical opportunities.
+        </p>
 
-</p>
+    </div>
+
+    <div class="vision-card">
+
+        <h2>Our Vision</h2>
+
+        <p>
+            To become the world's most trusted healthcare networking
+            platform connecting doctors, students, hospitals,
+            researchers, pharmaceutical companies and healthcare
+            organizations.
+        </p>
+
+    </div>
 
 </section>
 
@@ -82,17 +84,38 @@ To become the world's most trusted healthcare networking platform connecting doc
 
 <section class="founder">
 
-<h2>Founder & Managing Director</h2>
+    <h2>Founder & Managing Director</h2>
 
-<h3>Bhanusri Boddoju</h3>
+    <div class="founder-card">
 
-<p>
+        <div class="founder-photo">
 
-"Our vision is to build a trusted global healthcare networking platform that empowers healthcare professionals through education, collaboration, innovation, and international opportunities."
+            <img src="{{ url_for('static', filename='images/founder.jpg') }}"
+                 alt="Founder">
 
-</p>
+        </div>
+
+        <div class="founder-info">
+
+            <h3>Bhanusri Boddoju</h3>
+
+            <h4>Founder & Managing Director</h4>
+
+            <p>
+                "Our vision is to build a trusted global healthcare
+                networking platform that empowers healthcare
+                professionals through education, collaboration,
+                innovation and international opportunities."
+            </p>
+
+            <p><strong>Email:</strong> drkairosglobalconnect@gmail.com</p>
+
+        </div>
+
+    </div>
 
 </section>
 
 </body>
+
 </html>

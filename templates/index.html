@@ -10,71 +10,364 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
+
 <body>
 
-    <!-- Navigation -->
+<!-- ================= NAVIGATION ================= -->
 
-    <nav>
+<nav>
 
-        <div class="logo">
-            <h2>Dr Kairos GlobalConnect</h2>
-        </div>
+   <div class="logo">
 
-        <ul>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Dr Kairos GlobalConnect Logo">
 
-            <li><a href="/">Home</a></li>
+    <h2>Dr Kairos GlobalConnect</h2>
 
-            <li><a href="/about">About Us</a></li>
+</div>
 
-            <li><a href="/services">Services</a></li>
 
-            <li><a href="/conferences">Conferences</a></li>
+    <ul>
 
-            <li><a href="/registration">Registration</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/conferences">Conferences</a></li>
+        <li><a href="/registration">Registration</a></li>
+        <li><a href="/founder">Founder</a></li>
+        <li><a href="/contact">Contact</a></li>
 
-            <li><a href="/partners">Partners</a></li>
+    </ul>
 
-            <li><a href="/founder">Founder</a></li>
+</nav>
 
-            <li><a href="/contact">Contact</a></li>
+<!-- ================= HERO SECTION ================= -->
 
-        </ul>
+<section class="hero">
 
-    </nav>
+    <h1>Welcome to Dr Kairos GlobalConnect</h1>
 
-    <!-- Hero Section -->
+    <h2>
+        Connecting Healthcare Professionals to Global Opportunities
+    </h2>
 
-    <section class="hero">
 
-        <h1>Welcome to Dr Kairos GlobalConnect</h1>
+    <p>
+        Connecting healthcare professionals, students, hospitals,
+        pharmaceutical companies, conference organizers, medical colleges,
+        and healthcare organizations through one trusted global healthcare
+        networking platform.
+    </p>
 
-        <h2>Connecting Healthcare Professionals to Global Opportunities</h2>
 
-        <p>
+    <div class="hero-buttons">
 
-            Connecting healthcare professionals, students, hospitals,
+        <a href="#" class="btn">
+            👨‍⚕ Register as Doctor
+        </a>
 
-            pharmaceutical companies, conference organizers, medical colleges,
 
-            and healthcare organizations through one trusted global healthcare networking platform.
+        <a href="#" class="btn">
+            🎓 Register as Student
+        </a>
 
-        </p>
 
-        <div class="buttons">
+        <a href="#" class="btn">
+            🏥 Register as Hospital
+        </a>
 
-            <a href="/registration" class="btn">👨‍⚕ Register as Doctor</a>
 
-            <a href="/registration" class="btn">🎓 Register as Student</a>
+        <a href="#" class="btn">
+            💊 Register as Pharmaceutical Company
+        </a>
 
-            <a href="/registration" class="btn">🏥 Register as Hospital</a>
 
-            <a href="/registration" class="btn">💊 Register as Pharmaceutical Company</a>
+        <a href="#" class="btn">
+            🌍 Register as Organizer
+        </a>
 
-            <a href="/registration" class="btn">🌍 Register as Organizer</a>
 
-        </div>
+    </div>
 
-    </section>
+
+</section>
+
+<!-- ================= ABOUT BLOCK ================= -->
+
+
+<section class="home-block">
+
+
+<h2>Dr Kairos GlobalConnect</h2>
+
+
+<p>
+Dr Kairos GlobalConnect is a global healthcare networking platform
+designed to connect doctors, students, hospitals, pharmaceutical
+companies, medical colleges, and healthcare organizations.
+
+Our platform enables collaboration, knowledge sharing,
+professional networking, and global medical opportunities.
+</p>
+
+
+</section>
+
+<!-- ================= WHO WE CONNECT ================= -->
+
+
+<section class="connect-section">
+
+
+<h2>Who We Connect</h2>
+
+
+<div class="card-container">
+
+
+<div class="home-card">
+
+<h3>👨‍⚕ Doctors</h3>
+
+<p>
+Connect with global medical professionals,
+conferences and healthcare opportunities.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🎓 Students</h3>
+
+<p>
+Explore learning opportunities,
+medical events and professional growth.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🏥 Hospitals</h3>
+
+<p>
+Build international healthcare partnerships
+and collaborations.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>💊 Pharmaceutical Companies</h3>
+
+<p>
+Connect with healthcare networks and global platforms.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>🌍 Organizers</h3>
+
+<p>
+Promote and manage healthcare conferences
+worldwide.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+<!-- ================= MISSION VISION ================= -->
+
+
+<section class="mission-vision">
+
+
+<div class="mission-card">
+
+<h2>Our Mission</h2>
+
+<p>
+To create a trusted global healthcare ecosystem
+where professionals and organizations can connect,
+collaborate and grow together.
+</p>
+
+</div>
+
+
+
+<div class="vision-card">
+
+<h2>Our Vision</h2>
+
+<p>
+To become a leading global platform connecting
+healthcare communities and creating opportunities
+across borders.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= SERVICES ================= -->
+
+
+<section class="services">
+
+
+<h2>Our Services</h2>
+
+
+<div class="card-container">
+
+
+<div class="home-card">
+
+<h3>Global Conferences</h3>
+
+<p>
+Connecting professionals with international medical events.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>Healthcare Networking</h3>
+
+<p>
+Building meaningful healthcare collaborations.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>Medical Opportunities</h3>
+
+<p>
+Providing career and professional opportunities.
+</p>
+
+</div>
+
+
+
+<div class="home-card">
+
+<h3>Professional Collaboration</h3>
+
+<p>
+Connecting healthcare communities worldwide.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+
+<section class="cta">
+
+
+<h2>
+Join Dr Kairos GlobalConnect Today
+</h2>
+
+
+<p>
+Be part of the future of global healthcare networking.
+</p>
+
+
+<a href="#" class="btn">
+Register Now
+</a>
+
+
+<a href="#" class="btn">
+Contact Us
+</a>
+
+
+</section>
+
+
+
+
+
+<!-- ================= FOOTER ================= -->
+
+
+<footer>
+
+
+<h3>
+Dr Kairos GlobalConnect
+</h3>
+
+
+<p>
+Connecting Doctors to Global Medical Opportunities
+</p>
+
+
+<p>
+Email: drkairosglobalconnect@gmail.com
+</p>
+
+
+<p>
+Privacy Policy | Terms & Conditions | Disclaimer
+</p>
+
+
+<p>
+© 2026 Dr Kairos GlobalConnect. All Rights Reserved.
+</p>
+
+
+</footer>
+
+
 
 </body>
 
