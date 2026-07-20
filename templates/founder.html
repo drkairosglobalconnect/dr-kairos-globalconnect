@@ -4,37 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Founder | Dr Kairos GlobalConnect</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<div class="founder-section">
+<!-- ================= NAVIGATION ================= -->
 
-    <div class="founder-image">
+<nav>
+
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        <h2>Dr Kairos GlobalConnect</h2>
+    </div>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/conferences">Conferences</a></li>
+        <li><a href="/registration">Registration</a></li>
+        <li><a href="/founder">Founder</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- ================= FOUNDER ================= -->
+
+<section class="founder">
+
+<h2>Founder & Managing Director</h2>
+
+<div class="founder-card">
+
+    <div class="founder-photo">
         <img src="{{ url_for('static', filename='images/founder.jpg') }}"
              alt="Bhanusri Boddoju">
     </div>
 
-    <div class="founder-content">
+    <div class="founder-info">
 
-        <h1>Bhanusri Boddoju</h1>
+        <h3>Bhanusri Boddoju</h3>
 
-        <h3>Founder & Managing Director</h3>
+        <h4>Founder & Managing Director</h4>
 
         <p>
             Dr Kairos GlobalConnect was founded with the vision of connecting
             doctors to global medical opportunities through conferences,
-            education, networking, and collaboration.
+            education, networking, collaboration, and international healthcare partnerships.
         </p>
 
         <p>
-            <strong>Email:</strong>
-            drkairosglobalconnect@gmail.com
+            <strong>Email:</strong> drkairosglobalconnect@gmail.com
         </p>
 
     </div>
 
 </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h3>Dr Kairos GlobalConnect</h3>
+
+<p>Connecting Doctors to Global Medical Opportunities</p>
+
+<p>Email: drkairosglobalconnect@gmail.com</p>
+
+<p>
+© 2026 Dr Kairos GlobalConnect. All Rights Reserved.
+</p>
+
+</footer>
 
 </body>
 </html>

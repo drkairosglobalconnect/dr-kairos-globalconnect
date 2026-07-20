@@ -1,52 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Dr Kairos GlobalConnect</title>
+    <title>Contact | Dr Kairos GlobalConnect</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<div class="container">
+<!-- Navigation -->
+
+<nav>
+
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        <h2>Dr Kairos GlobalConnect</h2>
+    </div>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/conferences">Conferences</a></li>
+        <li><a href="/registration">Registration</a></li>
+        <li><a href="/founder">Founder</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- Contact Section -->
+
+<section class="contact-section">
 
     <h1>Contact Us</h1>
 
-    <p>
-        We are here to assist doctors, students, hospitals, pharmaceutical
-        companies, and conference organizers.
-    </p>
+    <div class="contact-container">
 
-    <hr>
+        <div class="contact-box">
 
-    <h2>Dr Kairos GlobalConnect</h2>
+            <h3>Dr Kairos GlobalConnect</h3>
 
-    <p><strong>Founder & Managing Director:</strong> Bhanusri Boddoju</p>
+            <p><strong>Founder & Managing Director:</strong> Bhanusri Boddoju</p>
 
-    <p><strong>Email:</strong>
-        <a href="mailto:drkairosglobalconnect@gmail.com">
-            drkairosglobalconnect@gmail.com
-        </a>
-    </p>
+            <p><strong>Email:</strong> drkairosglobalconnect@gmail.com</p>
 
-    <p><strong>Website:</strong>
-        <a href="https://dr-kairos-globalconnect.onrender.com" target="_blank">
-            https://dr-kairos-globalconnect.onrender.com
-        </a>
-    </p>
+            <p><strong>Website:</strong> https://dr-kairos-globalconnect.onrender.com</p>
 
-    <h3>Office Hours</h3>
+            <p><strong>Office Hours:</strong></p>
 
-    <p>
-        Monday – Saturday<br>
-        9:00 AM – 6:00 PM (IST)
-    </p>
+            <p>Monday – Saturday</p>
 
-    <p>
-        We aim to respond to all enquiries as promptly as possible.
-    </p>
+            <p>9:00 AM – 6:00 PM (IST)</p>
 
-</div>
+            <p>
+                We are here to assist doctors, students, hospitals,
+                pharmaceutical companies, and conference organizers.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer>
+
+    <h3>Dr Kairos GlobalConnect</h3>
+
+    <p>Connecting Doctors to Global Medical Opportunities</p>
+
+    <p>Email: drkairosglobalconnect@gmail.com</p>
+
+    <p>© 2026 Dr Kairos GlobalConnect. All Rights Reserved.</p>
+
+</footer>
 
 </body>
+
 </html>

@@ -232,6 +232,9 @@ def founder():
 def contact():
     return render_template("contact.html")
 
+@app.route("/logo-test")
+def logo_test():
+    return '<img src="/static/logo.png">'
 
 @app.route("/doctor", methods=["GET", "POST"])
 def doctor():
