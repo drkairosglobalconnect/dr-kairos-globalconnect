@@ -14,8 +14,9 @@
 
 <nav>
     <div class="logo">
-        <h2>Dr Kairos GlobalConnect</h2>
-    </div>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    <h2>Dr Kairos GlobalConnect</h2>
+</div>
 
     <ul>
            <li><a href="/">Home</a></li>
@@ -23,13 +24,12 @@
             <li><a href="/services">Services</a></li>
             <li><a href="/conferences">Conferences</a></li>
             <li><a href="/registration">Registration</a></li>
-            <li><a href="/partners">Partners</a></li>
             <li><a href="/founder">Founder</a></li>
             <li><a href="/contact">Contact</a></li>
     </ul>
 </nav>
 
-<section class="registration">
+<section class="registration-section">
 
 <h1>Choose Registration Type</h1>
 
@@ -70,74 +70,5 @@
 </section>
 
 </body>
-</html><!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration | Dr Kairos GlobalConnect</title>
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-</head>
-
-<body>
-
-<nav>
-    <div class="logo">
-        <h2>Dr Kairos GlobalConnect</h2>
-    </div>
-
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/conferences">Conferences</a></li>
-        <li><a href="/registration">Registration</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-</nav>
-
-<section class="registration">
-
-<h1>Choose Registration Type</h1>
-
-<div class="registration-container">
-
-<div class="registration-card">
-<h2>👨‍⚕️ Doctor</h2>
-<p>Registration Fee: ₹399</p>
-<a href="/doctor" class="btn">Register</a>
-</div>
-
-<div class="registration-card">
-<h2>🎓 Student</h2>
-<p>Registration Fee: ₹199</p>
-<a href="/student" class="btn">Register</a>
-</div>
-
-<div class="registration-card">
-<h2>🏥 Hospital</h2>
-<p>Registration Fee: ₹777</p>
-<a href="/hospital" class="btn">Register</a>
-</div>
-
-<div class="registration-card">
-<h2>💊 Pharmaceutical</h2>
-<p>Registration Fee: ₹777</p>
-<a href="/pharma" class="btn">Register</a>
-</div>
-
-<div class="registration-card">
-<h2>🌍 Organizer</h2>
-<p>Registration Fee: ₹777</p>
-<a href="/organizer" class="btn">Register</a>
-</div>
-
-</div>
-
-</section>
-
-</body>
 </html>
