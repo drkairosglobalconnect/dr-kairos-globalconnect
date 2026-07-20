@@ -31,76 +31,104 @@ href="{{ url_for('static', filename='style.css') }}">
 
 </nav>
 
-<section class="form-section">
+<section class="doctor-form-container">
 
-<h1>Student Registration</h1>
+    <h1>Student Registration</h1>
 
-<p>Registration Fee: <b>₹199</b></p>
+    <p class="fee"><b>Student Registration</b></p>
 
-<form method="POST">
+    <form method="POST">
 
-<h2>Student Details</h2>
+    <h2>Personal Details</h2>
 
-<label>Full Name</label>
-<input type="text" name="full_name" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Enter Full Name" required>
+        </div>
 
-<label>Date of Birth</label>
-<input type="date" name="dob" required>
+        <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" name="dob" required>
+        </div>
+    </div>
 
-<select name="gender" required>
-    <option>Male</option>
-    <option>Female</option>
-    <option>Other</option>
-</select>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
 
-<h2>College Details</h2>
+        <div class="form-group">
+            <label>College Name</label>
+            <input type="text" name="college" required>
+        </div>
+    </div>
 
-<label>College Name</label>
-<input type="text" name="college" required>
+    <h2>Academic Details</h2>
 
-<label>University</label>
-<input type="text" name="university" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>University</label>
+            <input type="text" name="university" required>
+        </div>
 
-<label>Course</label>
-<input type="text" name="course" required>
+        <div class="form-group">
+            <label>Course</label>
+            <input type="text" name="course" required>
+        </div>
+    </div>
 
-<label>Year of Study</label>
-<input type="number" name="year" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Year of Study</label>
+            <select name="year" required>
+                <option value="">Select Year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+                <option>Intern</option>
+            </select>
+        </div>
 
-<h2>Contact Details</h2>
+        <div class="form-group">
+        </div>
+    </div>
 
-<label>Email</label>
-<input type="email" name="email" required>
+    <h2>Contact Details</h2>
 
-<label>Mobile Number</label>
-<input type="tel" name="mobile" required>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+        </div>
 
-<label>WhatsApp Number</label>
-<input type="tel" name="whatsapp" required>
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" name="mobile" required>
+        </div>
+    </div>
 
-<h2>Upload Student ID</h2>
+    <div class="form-row">
+        <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" name="whatsapp" required>
+        </div>
 
-<input type="file">
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Create Password" required>
+        </div>
+    </div>
 
-<label>Password</label>
-
-<input
-    type="password"
-    name="password"
-    placeholder="Enter Password"
-    required>
-
-<br><br>
-
-<button type="submit">
-
-Register Now - ₹199</button>
-
-</button>
+    <button type="submit" class="submit-btn">
+        Register Now
+    </button>
 
 </form>
-
-</section>
-
-</body>
-</html>
