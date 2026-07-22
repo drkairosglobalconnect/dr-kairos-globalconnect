@@ -18,19 +18,17 @@ href="{{ url_for('static', filename='style.css') }}">
 
 <nav>
 
-<div class="logo">
+    <div class="logo">
+        <a href="/">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Dr Kairos GlobalConnect Logo">
+        </a>
+        <h2>Dr Kairos GlobalConnect</h2>
+    </div>
 
-<h2>Dr Kairos GlobalConnect</h2>
-
-</div>
-
-<ul>
-
-<li><a href="/">Home</a></li>
-
-<li><a href="/registration">Registration</a></li>
-
-</ul>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/registration">Registration</a></li>
+    </ul>
 
 </nav>
 

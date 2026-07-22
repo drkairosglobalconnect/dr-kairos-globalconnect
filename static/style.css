@@ -30,51 +30,38 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:12px 50px;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 3px 12px rgba(0,0,0,.15);
+    padding:15px 60px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 }
 
 .logo img{
-    width:75px;
-    height:75px;
-    object-fit:contain;
-    display:block;
+    height:60px;
+    width:auto;
 }
 
 .logo h2{
-    color:#fff;
+    color:white;
+    margin:0;
     font-size:24px;
-    font-weight:700;
 }
 
 nav ul{
     display:flex;
     list-style:none;
-    gap:20px;
+    gap:25px;
 }
 
 nav ul li a{
     color:white;
     text-decoration:none;
-    font-weight:600;
-    padding:10px 15px;
-    border-radius:8px;
-    transition:.3s;
+    font-weight:bold;
 }
 
-nav ul li a:hover{
-    background:white;
-    color:#0056b3;
-}
 /* ==========================================
    HERO SECTION
 ========================================== */
@@ -482,69 +469,68 @@ footer p{
     font-size:16px;
 
 }
-/* ==========================================
-   REGISTRATION PAGE
-========================================== */
+/* Registration Page */
 
 .registration-section{
-    padding:70px 60px;
-    background:#f4f8fc;
+    padding:60px 40px;
     text-align:center;
+    background:#f4f8fc;
 }
 
 .registration-section h1{
     color:#0056b3;
-    font-size:42px;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .registration-section p{
-    max-width:900px;
-    margin:0 auto 50px;
     color:#555;
-    font-size:18px;
+    margin-bottom:35px;
 }
 
-.registration-container{
-    max-width:1400px;
-    margin:40px auto;
-    display:flex;
-    justify-content:center;
-    align-items:stretch;
-    flex-wrap:wrap;
+.registration-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:30px;
+    max-width:1200px;
+    margin:auto;
 }
 
 .registration-card{
-    width:320px;
     background:#fff;
+    border-radius:12px;
     padding:30px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    box-shadow:0 5px 15px rgba(0,0,0,0.12);
     transition:0.3s;
 }
 
 .registration-card:hover{
     transform:translateY(-8px);
-    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    box-shadow:0 10px 25px rgba(0,0,0,0.18);
 }
 
-.registration-card h2{
+.registration-card h3{
     color:#0056b3;
-    font-size:28px;
     margin-bottom:15px;
 }
 
 .registration-card p{
-    font-size:18px;
-    margin-bottom:20px;
-    color:#555;
+    color:#666;
+    min-height:45px;
 }
 
-.registration-card .btn{
-    width:100%;
-    display:block;
+.register-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 28px;
+    background:#0056b3;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.register-btn:hover{
+    background:#003f8a;
 }
 
 /* ==========================================
@@ -804,4 +790,22 @@ footer p{
         margin:20px;
         padding:20px;
     }
+}
+/* Registration Form Logo */
+
+.form-logo{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.form-logo img{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+}
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#0056b3;
 }

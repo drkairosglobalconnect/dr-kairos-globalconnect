@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 resend.api_key = os.environ.get("RESEND_API_KEY")
 
-from flask import Flask, render_template, request, redirect, url_for, session, send_file, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session, send_file, send_from_directory, Response
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 from sqlalchemy import or_
@@ -1148,6 +1148,40 @@ def test_mail():
 
     except Exception as e:
         return f"Email failed: {str(e)}"
+
+@app.route("/sitemap.xml")
+def sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://drkairosglobalconnect.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://drkairosglobalconnect.com/about</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://drkairosglobalconnect.com/services</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://drkairosglobalconnect.com/conferences</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://drkairosglobalconnect.com/contact</loc>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
+"""
+    return Response(xml, mimetype="application/xml")
 
 if __name__ == "__main__":
 
